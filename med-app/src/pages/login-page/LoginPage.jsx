@@ -24,7 +24,7 @@ const LoginPage = () => {
                     </Box>
                     <Box onSubmit={handleSubmit(submit)} component='form' noValidate autoComplete="off">
                         <Box component='div'>
-                            <TextField sx={Sx.inputSx} id="email-login-form" type='email' label="Email" variant="filled" {...register('email', {
+                            <TextField sx={Sx.inputSx} id="email-login-form" type='email' label="Email" variant="filled" error={errors.email ? true : false} {...register('email', {
                                 required: 'Pole jest wymagane',
                                 pattern: {
                                     value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -32,7 +32,7 @@ const LoginPage = () => {
                                 }
                             })} />
                             <Typography variant='caption' align='center' color='error' >{errors.email?.message}</Typography>
-                            <TextField sx={Sx.inputSx} id="password-login-form" type='password' label="Password" variant="filled" {...register('password', {
+                            <TextField sx={Sx.inputSx} id="password-login-form" type='password' label="Password" variant="filled" error={errors.password ? true : false} {...register('password', {
                                 required: 'Pole jest wymagane',
                                 minLength: {
                                     value: 5,
