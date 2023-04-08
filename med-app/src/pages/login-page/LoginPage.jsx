@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, Card, TextField, CardContent, Typography, Button } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import { Sx } from './loginpage.style';
 import { useForm } from "react-hook-form";
+import { LoginContext } from '../../contexts/loginContext';
 
 const LoginPage = () => {
 
-    const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm({defaultValues: {
-        email: '',
-        password: ''
-    }});
+    const { loggedState, setLoggedState } = useContext(LoginContext);
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: {
+            email: '',
+            password: ''
+        }
+    });
 
     const submit = (data) => {
         console.log(data);
