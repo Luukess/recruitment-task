@@ -6,10 +6,12 @@ import { useForm } from "react-hook-form";
 import { LoginContext } from '../../contexts/loginContext';
 import { userLogin } from '../../utils/user';
 import { handleErrorToast } from '../../components/toastify/Toastify';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 
     const { loggedState, setLoggedState } = useContext(LoginContext);
+    const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
@@ -23,6 +25,7 @@ const LoginPage = () => {
             const user = await userLogin();
             if (data.email === user.email && data.password === user.password) {
                 setLoggedState(true);
+                navigate('/app/home');
             } else {
                 throw new Error('Nieudane logowanie');
             }

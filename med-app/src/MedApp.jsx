@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import Menu from './components/menu/Menu';
 import { LoginContext } from './contexts/loginContext';
 import Toastify from './components/toastify/Toastify';
+import HomePage from './pages/home-page/HomePage';
+import ProtectedRoute from './components/protectedroute/ProtectedRoute';
 
 function MedApp() {
 
@@ -25,6 +27,9 @@ function MedApp() {
                 <Routes>
                     <Route path='/' element={<Navigate to='/login' />} />
                     <Route exact path='/login' element={<LoginPage />} />
+                    <Route element={<ProtectedRoute />} >
+                        <Route path='/app/home' element={<HomePage />} />
+                    </Route> 
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>
                 <Toastify />
