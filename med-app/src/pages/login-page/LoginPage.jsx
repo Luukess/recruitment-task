@@ -4,6 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { Sx } from './loginpage.style';
 import { useForm } from "react-hook-form";
 import { LoginContext } from '../../contexts/loginContext';
+import { userLogin } from '../../utils/user';
 
 const LoginPage = () => {
 
@@ -16,8 +17,17 @@ const LoginPage = () => {
         }
     });
 
-    const submit = (data) => {
-        console.log(data);
+    const submit = async (data) => {
+        try{
+            const user = await userLogin();
+            if(data.email === user.email && data.password === user.password){
+                setLoggedState(true);
+            }else{
+                throw new Error('Niepoprawne dane logowania');
+            }
+        }catch(e){
+            console.error(e);
+        }
     };
 
     return (
