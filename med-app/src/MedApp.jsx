@@ -4,6 +4,7 @@ import LoginPage from './pages/login-page/LoginPage';
 import Box from '@mui/material/Box';
 import Menu from './components/menu/Menu';
 import { LoginContext } from './contexts/loginContext';
+import Toastify from './components/toastify/Toastify';
 
 function MedApp() {
 
@@ -26,11 +27,10 @@ function MedApp() {
                     <Route exact path='/login' element={<LoginPage />} />
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>
+                <Toastify />
             </LoginContext.Provider>
         </Box>
     );
 };
-
-
 
 export default MedApp;

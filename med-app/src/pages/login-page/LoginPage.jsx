@@ -5,6 +5,7 @@ import { Sx } from './loginpage.style';
 import { useForm } from "react-hook-form";
 import { LoginContext } from '../../contexts/loginContext';
 import { userLogin } from '../../utils/user';
+import { handleErrorToast } from '../../components/toastify/Toastify';
 
 const LoginPage = () => {
 
@@ -18,15 +19,15 @@ const LoginPage = () => {
     });
 
     const submit = async (data) => {
-        try{
+        try {
             const user = await userLogin();
-            if(data.email === user.email && data.password === user.password){
+            if (data.email === user.email && data.password === user.password) {
                 setLoggedState(true);
-            }else{
-                throw new Error('Niepoprawne dane logowania');
+            } else {
+                throw new Error('Nieudane logowanie');
             }
-        }catch(e){
-            console.error(e);
+        } catch (e) {
+            handleErrorToast(e);
         }
     };
 
