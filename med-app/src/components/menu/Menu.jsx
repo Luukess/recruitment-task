@@ -14,7 +14,7 @@ const Menu = () => {
 
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="static" sx={Sx.appBarSx}>
                 <Toolbar variant="dense" sx={Sx.toolbarSx}>
                     <Box sx={Sx.innerBoxOne} component='div'>
                         {loggedState &&

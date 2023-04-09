@@ -15,8 +15,8 @@ function MedApp() {
     const providerValue = useMemo(() => ({ loggedState, setLoggedState }), [loggedState, setLoggedState]);
 
     const boxSx = {
-        width: '100vw',
-        height: '100vh',
+        width: '100%',
+        height: '100%',
         backgroundColor: '#F3FAFF'
     };
 

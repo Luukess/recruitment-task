@@ -1,6 +1,6 @@
 export const Sx = {
     boxSx: {
-        height: 'calc(100vh - 50px)',
+        height: 'calc(100vh - 58px)',
         width: 'calc(100% - 20px)',
         display: 'flex',
         justifyContent: 'center',

@@ -18,5 +18,8 @@ export const Sx = {
     innerBoxTwo: {
         width: '50%',
         textAlign: 'right'
+    },
+    appBarSx: {
+        marginBottom: '8px'
     }
 }
