@@ -1,7 +1,7 @@
 import React from "react";
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -25,28 +25,28 @@ const Chart = () => {
       },
     ],
     legend: {
-        diaplay: false
+      diaplay: false
     }
   };
 
   const options = {
-        plugins: {
-            legend: {
-                position: 'bottom',
-            },
-            border: {
-                display: false
-            },
-        }
+    plugins: {
+      legend: {
+        position: 'bottom',
+      },
+      border: {
+        display: false
+      },
+    }
   }
 
-    return(
-        <>
-            <Box component="div" sx={{width: '225px'}} >
-                <Doughnut data={data} options={options} />
-            </Box>
-        </>
-    );
+  return (
+    <>
+      <Box component="div" sx={{ width: '225px' }} >
+        <Doughnut data={data} options={options} />
+      </Box>
+    </>
+  );
 };
 
 export default Chart;

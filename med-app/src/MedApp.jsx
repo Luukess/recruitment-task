@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './pages/login-page/LoginPage';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import Menu from './components/menu/Menu';
 import { LoginContext } from './contexts/loginContext';
 import Toastify from './components/toastify/Toastify';
@@ -29,7 +29,7 @@ function MedApp() {
                     <Route exact path='/login' element={<LoginPage />} />
                     <Route element={<ProtectedRoute />} >
                         <Route path='/app/home' element={<HomePage />} />
-                    </Route> 
+                    </Route>
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>
                 <Toastify />

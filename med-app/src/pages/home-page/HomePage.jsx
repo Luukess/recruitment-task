@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import Chart from "./components/Chart";
 import { Typography } from '@mui/material';
 import { Sx } from "./homepage.style";
