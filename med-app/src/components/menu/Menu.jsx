@@ -4,6 +4,7 @@ import { Sx } from './menu.style';
 import MenuIcon from '@mui/icons-material/Menu';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { LoginContext } from '../../contexts/loginContext';
+import ScienceIcon from '@mui/icons-material/Science';
 
 const Menu = () => {
 
@@ -22,8 +23,8 @@ const Menu = () => {
                                 <MenuIcon />
                             </IconButton>
                         }
-                        <Typography variant='h6' sx={{ padding: '8px' }}>
-                            Logo
+                        <Typography variant='h6' sx={{ padding: '8px', display: 'flex', alignItems: 'center' }}>
+                            <ScienceIcon sx={{fontSize: '22px'}}/> MedApp
                         </Typography>
                     </Box>
                     <Box sx={Sx.innerBoxTwo}>
