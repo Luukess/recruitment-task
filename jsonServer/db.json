@@ -1,0 +1,108 @@
+{
+    "patients": [
+        {
+            "id": "1",
+            "name": "Jan",
+            "surname": "Kowalski",
+            "city": "Białystok",
+            "zipCode": "15-151",
+            "street": "Warszawska",
+            "houseNumber": "12",
+            "apartmentNumber": "15",
+            "phoneNumber": "123456789",
+            "email": "kowalski@medapp.com",
+            "country": "Polska"
+        },
+        {
+            "id": "2",
+            "name": "Paweł",
+            "surname": "Pawłowski",
+            "city": "Warszawa",
+            "zipCode": "01-465",
+            "street": "Białostocka",
+            "houseNumber": "89",
+            "apartmentNumber": "4",
+            "phoneNumber": "326598741",
+            "email": "pawłowski@medapp.com",
+            "country": "Polska"
+        },
+        {
+            "id": "3",
+            "name": "Damian",
+            "surname": "Kubkowski",
+            "city": "Łomża",
+            "zipCode": "07-896",
+            "street": "Olejowa",
+            "houseNumber": "5",
+            "apartmentNumber": "9",
+            "phoneNumber": "561245680",
+            "email": "kubkowski@medapp.com",
+            "country": "Polska"
+        },
+        {
+            "id": "4",
+            "name": "Elżbieta",
+            "surname": "Platera",
+            "city": "Augustów",
+            "zipCode": "3-803",
+            "street": "Poznańska",
+            "houseNumber": "9",
+            "apartmentNumber": "49",
+            "phoneNumber": "983260145",
+            "email": "platera@medapp.com",
+            "country": "Polska"
+        },
+        {
+            "id": "5",
+            "name": "Wojciech",
+            "surname": "Miły",
+            "city": "Wrocław",
+            "zipCode": "4-325",
+            "street": "Kolorowa",
+            "houseNumber": "32",
+            "apartmentNumber": "26",
+            "phoneNumber": "103201265",
+            "email": "mily@medapp.com",
+            "country": "Polska"
+        },
+        {
+            "id": "6",
+            "name": "Damian",
+            "surname": "Dominikański",
+            "city": "Białystok",
+            "zipCode": "09-324",
+            "street": "Słowacka",
+            "houseNumber": "3",
+            "apartmentNumber": "55",
+            "phoneNumber": "969326320",
+            "email": "dominikanski@medapp.com",
+            "country": "Polska"
+        },
+        {
+            "id": "7",
+            "name": "Ewa",
+            "surname": "Wesoła",
+            "city": "Sopot",
+            "zipCode": "07-641",
+            "street": "Cytrynowa",
+            "houseNumber": "78",
+            "apartmentNumber": "1",
+            "phoneNumber": "201302659",
+            "email": "wesola@medapp.com",
+            "country": "Polska"
+        },
+        {
+            "id": "8",
+            "name": "Magdalena",
+            "surname": "Piotrowiak",
+            "city": "Gdańsk",
+            "zipCode": "08-965",
+            "street": "Malmeda",
+            "houseNumber": "8",
+            "apartmentNumber": "9",
+            "phoneNumber": "856232012",
+            "email": "piotrowiak@medapp.com",
+            "country": "Polska"
+        }
+    ]
+}
