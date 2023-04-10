@@ -3,11 +3,12 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Box from '@mui/material/Box';
 import Chart from "./components/Chart";
-import { List, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { Sx } from "./homepage.style";
 import { Select, MenuItem } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
+import BiotechIcon from '@mui/icons-material/Biotech';
 import ListItem from "./ListItem";
 
 const HomePage = () => {
@@ -71,7 +72,7 @@ const HomePage = () => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid xs={12} sm={8}>
+                <Grid xs={12} sm={12} md={8}>
                     <Box component='div' sx={Sx.listGridBoxSx}>
                         <Box component='div' sx={Sx.listGridBoxSortSx}>
                             <Select
@@ -106,7 +107,33 @@ const HomePage = () => {
                 </Grid>
                 <Grid xs={12} >
                     <Box component='div' sx={Sx.listGridBoxSx}>
-                        Lista projeków
+                        <Box component='div' sx={{ padding: '10px' }}>
+                            <Typography variant="h6">
+                                Projekty badawcze
+                            </Typography>
+                        </Box>
+                        <Box component='div' sx={Sx.listBoxSx}>
+                            <Grid container spacing={1}>
+                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
+                                    <BiotechIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
+                                    <BiotechIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
+                                    <BiotechIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
+                                    <BiotechIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
+                                    <BiotechIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
+                                    <BiotechIcon />
+                                </ListItem>
+                            </Grid>
+                        </Box>
                     </Box>
                 </Grid>
             </Grid>

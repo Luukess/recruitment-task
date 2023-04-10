@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 
 const ListItem = (props) => {
 
-    const { Sx, children, patientsData, testsData } = props;
+    const { Sx, children, patientsData, testsData, projectsData } = props;
 
     return (
         <>
@@ -14,7 +14,11 @@ const ListItem = (props) => {
                     <Avatar>
                         {children}
                     </Avatar>
-                    <Typography sx={{ marginLeft: '10px' }}>{patientsData ? patientsData : testsData}</Typography>
+                    <Typography sx={{ marginLeft: '10px' }}>
+                        {testsData && testsData}
+                        {patientsData && patientsData}
+                        {projectsData && projectsData}
+                        </Typography>
                 </Paper>
             </Grid>
         </>
