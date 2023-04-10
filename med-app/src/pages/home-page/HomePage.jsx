@@ -9,7 +9,7 @@ import { Select, MenuItem } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import BiotechIcon from '@mui/icons-material/Biotech';
-import ListItem from "./ListItem";
+import ListItem from './components/ListItem'
 
 const HomePage = () => {
 
