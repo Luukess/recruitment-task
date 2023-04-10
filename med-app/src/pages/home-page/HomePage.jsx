@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Box } from '@mui/material';
@@ -10,11 +10,47 @@ import PersonIcon from '@mui/icons-material/Person';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import ListItem from './components/ListItem'
+import { handleGetPatients } from "../../services/api";
 
 const HomePage = () => {
 
     const [patientSort, setPatientSort] = useState('asc');
     const [testsSort, setTestSort] = useState('asc');
+
+    const [patientsArray, setPatientsArray] = useState([]);
+    const [patientsError, setPatientsError] = useState({ error: false, message: '' });
+
+    const handleGetAllPatients = async () => {
+        try {
+            const patientsResponse = await handleGetPatients();
+            if (patientsResponse.status === 200) {
+                sortPatients(patientsResponse.data, patientSort);
+            };
+        } catch (e) {
+            console.log(e);
+            setPatientsError({ error: true, message: 'Problem z serwerem!' });
+        };
+    };
+    
+    const sortPatients = (data, sortMethod) => {
+        if(data.length > 0){
+            if(sortMethod === 'asc'){
+                const getData = [...data].sort((a,b) => (a.surname.toLowerCase() > b.surname.toLowerCase()) ? 1 : (a.surname.toLowerCase() < b.surname.toLowerCase()) ? -1 : 0);
+                setPatientsArray(getData);
+            }else if(sortMethod === 'desc'){
+                const getData = [...data].sort((a,b) => (a.surname.toLowerCase() < b.surname.toLowerCase()) ? 1 : (a.surname.toLowerCase() > b.surname.toLowerCase()) ? -1 : 0);
+                setPatientsArray(getData);
+            };
+        };
+    };
+
+    useEffect(() => {
+        sortPatients(patientsArray, patientSort);
+    }, [patientSort]);
+
+    useEffect(() => {
+        handleGetAllPatients();
+    }, []);
 
     return (
         <Container sx={Sx.containerSx}>
@@ -46,18 +82,31 @@ const HomePage = () => {
                         </Box>
                         <Box component='div' sx={Sx.listBoxSx}>
                             <Grid container spacing={1}>
-                                <ListItem Sx={Sx} patientsData={'dane pacjenta'} >
-                                    <PersonIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} patientsData={'dane pacjenta'} >
-                                    <PersonIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} patientsData={'dane pacjenta'} >
-                                    <PersonIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} patientsData={'dane pacjenta'} >
-                                    <PersonIcon />
-                                </ListItem>
+                                {!patientsError.error ?
+                                    <>
+                                        {patientsArray.length > 0 ? patientsArray?.map((patientData, i) => (
+                                            <ListItem key={i} Sx={Sx} patientData={patientData} >
+                                                <PersonIcon />
+                                            </ListItem>
+                                        ))
+                                            :
+
+                                            <Box component='div' sx={Sx.comunicateBoxSx}>
+                                                <Typography>
+                                                    Brak dancyh
+                                                </Typography>
+                                            </Box>
+                                        }
+                                    </>
+                                    :
+                                    <>
+                                        <Box component='div' sx={Sx.comunicateBoxSx}>
+                                            <Typography>
+                                                {patientsError.message}
+                                            </Typography>
+                                        </Box>
+                                    </>
+                                }
                             </Grid>
                         </Box>
                     </Box>

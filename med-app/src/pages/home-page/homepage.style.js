@@ -4,25 +4,25 @@ export const Sx = {
         height: '100%'
     },
     chartGridBoxSx: {
-        backgroundColor: '#C4E0F3', 
-        width: '100%', 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignContent: 'center', 
+        backgroundColor: '#C4E0F3',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignContent: 'center',
         flexDirection: 'column',
         borderRadius: '5px',
     },
     chartBoxSx: {
-        width: '100%', 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignContent: 'center' 
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignContent: 'center'
     },
     chartHeaderSx: {
         textAlign: 'center'
     },
     listGridBoxSx: {
-        backgroundColor: '#C4E0F3', 
+        backgroundColor: '#C4E0F3',
         height: '255px',
         borderRadius: '5px',
     },
@@ -45,5 +45,12 @@ export const Sx = {
         alignItems: 'center',
         flexWrap: 'wrap',
         flexDirection: 'row'
+    },
+    comunicateBoxSx: {
+        height: '170px',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 }
