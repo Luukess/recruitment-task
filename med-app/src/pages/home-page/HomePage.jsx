@@ -3,11 +3,12 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Box from '@mui/material/Box';
 import Chart from "./components/Chart";
-import { Typography } from '@mui/material';
+import { List, Typography } from '@mui/material';
 import { Sx } from "./homepage.style";
-import { Select, MenuItem, Paper, Avatar } from '@mui/material';
+import { Select, MenuItem } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
+import ListItem from "./ListItem";
 
 const HomePage = () => {
 
@@ -44,29 +45,18 @@ const HomePage = () => {
                         </Box>
                         <Box component='div' sx={Sx.listBoxSx}>
                             <Grid container spacing={1}>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} >
-                                        <Avatar>
-                                            <PersonIcon />
-                                        </Avatar>
-                                        <Typography sx={{marginLeft: '10px'}}>Imię i nazwisko</Typography>
-                                    </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
+                                <ListItem Sx={Sx} patientsData={'dane pacjenta'} >
+                                    <PersonIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} patientsData={'dane pacjenta'} >
+                                    <PersonIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} patientsData={'dane pacjenta'} >
+                                    <PersonIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} patientsData={'dane pacjenta'} >
+                                    <PersonIcon />
+                                </ListItem>
                             </Grid>
                         </Box>
                     </Box>
@@ -98,29 +88,18 @@ const HomePage = () => {
                         </Box>
                         <Box component='div' sx={Sx.listBoxSx}>
                             <Grid container spacing={1}>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} >
-                                        <Avatar>
-                                            <EnhancedEncryptionIcon />
-                                        </Avatar>
-                                        <Typography sx={{marginLeft: '10px'}}>Nazwa badania</Typography>
-                                    </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
-                                <Grid xs={12}>
-                                    <Paper sx={Sx.elementListSx} > assadsa </Paper>
-                                </Grid>
+                                <ListItem Sx={Sx} testsData={'dane badań'}>
+                                    <EnhancedEncryptionIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} testsData={'dane badań'}>
+                                    <EnhancedEncryptionIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} testsData={'dane badań'}>
+                                    <EnhancedEncryptionIcon />
+                                </ListItem>
+                                <ListItem Sx={Sx} testsData={'dane badań'}>
+                                    <EnhancedEncryptionIcon />
+                                </ListItem>
                             </Grid>
                         </Box>
                     </Box>
