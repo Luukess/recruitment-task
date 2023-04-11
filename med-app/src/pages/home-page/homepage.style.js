@@ -39,7 +39,7 @@ export const Sx = {
         overflow: 'auto'
     },
     elementListSx: {
-        padding: '5px 10px',
+        padding: '4px 10px',
         // height: '40px',
         display: 'flex',
         justifyContent: 'flex-start',

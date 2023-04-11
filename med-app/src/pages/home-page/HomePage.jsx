@@ -11,6 +11,7 @@ import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import ListItem from './components/ListItem'
 import { handleGetPatients, handleGetProjects, handleGetTests } from "../../services/api";
+import { handleFilterTests } from "../../utils/filteringFunction";
 
 const HomePage = () => {
 
@@ -18,7 +19,7 @@ const HomePage = () => {
     const [patientsArray, setPatientsArray] = useState([]);
     const [patientsError, setPatientsError] = useState({ error: false, message: '' });
 
-    const [testsSort, setTestSort] = useState('ongoing');
+    const [testsSort, setTestSort] = useState('all');
     const [testsArray, setTestsArray] = useState([]);
     const [testsError, setTestsError] = useState({ error: false, message: '' });
 
@@ -72,6 +73,8 @@ const HomePage = () => {
             };
         };
     };
+
+    const testsAllData = [...handleFilterTests(testsArray, testsSort)];
 
     useEffect(() => {
         sortPatients(patientsArray, patientSort);
@@ -172,7 +175,7 @@ const HomePage = () => {
                             <Grid container spacing={1}>
                                 {!testsError.error ?
                                     <>
-                                        {testsArray.length > 0 ? testsArray?.map((testData, i) => (
+                                        {testsAllData.length > 0 ? testsAllData?.map((testData, i) => (
                                             <ListItem key={i} Sx={Sx} tessData={testData}>
                                                 <EnhancedEncryptionIcon />
                                             </ListItem>
