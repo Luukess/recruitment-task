@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { LoginContext } from '../../contexts/loginContext';
 import ScienceIcon from '@mui/icons-material/Science';
+import Grid from '@mui/material/Unstable_Grid2';
 
 const Menu = () => {
 
@@ -24,7 +25,7 @@ const Menu = () => {
                             </IconButton>
                         }
                         <Typography variant='h6' sx={{ padding: '8px', display: 'flex', alignItems: 'center' }}>
-                            <ScienceIcon sx={{fontSize: '22px'}}/> MedApp
+                            <ScienceIcon sx={{ fontSize: '22px' }} /> MedApp
                         </Typography>
                     </Box>
                     <Box sx={Sx.innerBoxTwo}>
@@ -38,7 +39,25 @@ const Menu = () => {
                         onClose={() => setIsDrawerOpen(false)}
                     >
                         <Box sx={Sx.drawerBox}>
-
+                            <Box component='div' sx={{ padding: '20px' }} >
+                                <Typography sx={Sx.logoNavSx}>
+                                    <ScienceIcon sx={{ fontSize: '40px' }} /> MedApp
+                                </Typography>
+                            </Box>
+                            <Box component='div' sx={{ padding: '10px' }}>
+                                <Grid container spacing={4}>
+                                    <Grid xs={12}>
+                                        <Button sx={Sx.navLinkSx} variant="contained" size='small' component='a'>
+                                            Strona główna
+                                        </Button>
+                                    </Grid>
+                                    <Grid xs={12}>
+                                        <Button sx={Sx.navLinkSx} variant="contained" size='small'component='a'>
+                                            Projekty
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Box>
                         </Box>
                     </Drawer>
                 </Toolbar>

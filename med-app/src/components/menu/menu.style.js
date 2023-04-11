@@ -1,13 +1,13 @@
 export const Sx = {
-    toolbarSx : {
+    toolbarSx: {
         height: '50px',
         display: 'flex',
         justifyContent: 'space-bettwen'
     },
     drawerBox: {
-        padding: '2px',
+        padding: '10px',
         width: '320px',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     innerBoxOne: {
         width: '50%',
@@ -21,5 +21,15 @@ export const Sx = {
     },
     appBarSx: {
         marginBottom: '8px'
+    },
+    logoNavSx: {
+        fontSize: '35px',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    navLinkSx: {
+        width: '100%'
     }
 }
