@@ -1,108 +1,298 @@
 {
     "patients": [
         {
-            "id": "1",
+            "id": 1,
             "name": "Jan",
             "surname": "Kowalski",
             "city": "Białystok",
             "zipCode": "15-151",
             "street": "Warszawska",
-            "houseNumber": "12",
-            "apartmentNumber": "15",
+            "houseNumber": 12,
+            "apartmentNumber": 15,
             "phoneNumber": "123456789",
             "email": "kowalski@medapp.com",
-            "country": "Polska"
+            "country": "Polska",
+            "projectId": 4,
+            "researchId": null
         },
         {
-            "id": "2",
+            "id": 2,
             "name": "Paweł",
             "surname": "Pawłowski",
             "city": "Warszawa",
             "zipCode": "01-465",
             "street": "Białostocka",
-            "houseNumber": "89",
-            "apartmentNumber": "4",
+            "houseNumber": 89,
+            "apartmentNumber": 4,
             "phoneNumber": "326598741",
             "email": "pawłowski@medapp.com",
-            "country": "Polska"
+            "country": "Polska",
+            "projectId": 6,
+            "researchId": null
         },
         {
-            "id": "3",
+            "id": 3,
             "name": "Damian",
             "surname": "Kubkowski",
             "city": "Łomża",
             "zipCode": "07-896",
             "street": "Olejowa",
-            "houseNumber": "5",
-            "apartmentNumber": "9",
+            "houseNumber": 5,
+            "apartmentNumber": 9,
             "phoneNumber": "561245680",
             "email": "kubkowski@medapp.com",
-            "country": "Polska"
+            "country": "Polska",
+            "projectId": 5,
+            "researchId": null
         },
         {
-            "id": "4",
+            "id": 4,
             "name": "Elżbieta",
             "surname": "Platera",
             "city": "Augustów",
             "zipCode": "3-803",
             "street": "Poznańska",
-            "houseNumber": "9",
-            "apartmentNumber": "49",
+            "houseNumber": 9,
+            "apartmentNumber": 49,
             "phoneNumber": "983260145",
             "email": "platera@medapp.com",
-            "country": "Polska"
+            "country": "Polska",
+            "projectId": 2,
+            "researchId": null
         },
         {
-            "id": "5",
+            "id": 5,
             "name": "Wojciech",
             "surname": "Miły",
             "city": "Wrocław",
             "zipCode": "4-325",
             "street": "Kolorowa",
-            "houseNumber": "32",
-            "apartmentNumber": "26",
+            "houseNumber": 32,
+            "apartmentNumber": 26,
             "phoneNumber": "103201265",
             "email": "mily@medapp.com",
-            "country": "Polska"
+            "country": "Polska",
+            "projectId": null,
+            "researchId": null
         },
         {
-            "id": "6",
+            "id": 6,
             "name": "Damian",
             "surname": "Dominikański",
             "city": "Białystok",
             "zipCode": "09-324",
             "street": "Słowacka",
-            "houseNumber": "3",
-            "apartmentNumber": "55",
+            "houseNumber": 3,
+            "apartmentNumber": 55,
             "phoneNumber": "969326320",
             "email": "dominikanski@medapp.com",
-            "country": "Polska"
+            "country": "Polska",
+            "projectId": null,
+            "researchId": null
         },
         {
-            "id": "7",
+            "id": 7,
             "name": "Ewa",
             "surname": "Wesoła",
             "city": "Sopot",
             "zipCode": "07-641",
             "street": "Cytrynowa",
-            "houseNumber": "78",
-            "apartmentNumber": "1",
+            "houseNumber": 78,
+            "apartmentNumber": 1,
             "phoneNumber": "201302659",
             "email": "wesola@medapp.com",
-            "country": "Polska"
+            "country": "Polska",
+            "projectId": null,
+            "researchId": null
         },
         {
-            "id": "8",
+            "id": 8,
             "name": "Magdalena",
             "surname": "Piotrowiak",
             "city": "Gdańsk",
             "zipCode": "08-965",
             "street": "Malmeda",
-            "houseNumber": "8",
-            "apartmentNumber": "9",
+            "houseNumber": 8,
+            "apartmentNumber": 9,
             "phoneNumber": "856232012",
             "email": "piotrowiak@medapp.com",
-            "country": "Polska"
+            "country": "Polska",
+            "projectId": null,
+            "researchId": null
+        }
+    ],
+    "projects": [
+        {
+            "id": 1,
+            "projectType": "Badawczy",
+            "dataStarted": "2022-08-28",
+            "dataCompleted": "2022-12-10",
+            "title": "Badania nad komórkami macierzystymi",
+            "dataSources": "Lab. Białystok",
+            "pNumber": "2022/ACB/08/28",
+            "keywords": [
+                "komórki",
+                "wzrost",
+                "badania"
+            ],
+            "isFinished": true,
+            "financialFunds": "20000",
+            "authors": [
+                "Załona Paweł",
+                "Żyłka Adam",
+                "Car Roert"
+            ],
+            "institutionData": "Uniwersytet Medyczny Białystok"
+        },
+        {
+            "id": 2,
+            "projectType": "Naukowy",
+            "dataStarted": "2023-01-29",
+            "dataCompleted": null,
+            "title": "Projekt endoprotezy biodra",
+            "dataSources": "Ortopedia Gdańsk",
+            "pNumber": "2023/BCD/01/29",
+            "keywords": [
+                "kość",
+                "biodro",
+                "proteza"
+            ],
+            "isFinished": false,
+            "financialFunds": "100000",
+            "authors": [
+                "Gus Łukasz",
+                "Pawlik Ewelina",
+                "Wtorek Adam"
+            ],
+            "institutionData": "Uniwersytet Gdański"
+        },
+        {
+            "id": 3,
+            "projectType": "Badawczy",
+            "dataStarted": "2020-04-06",
+            "dataCompleted": "2020-06-30",
+            "title": "Badania układu krwionośnego",
+            "dataSources": "Lab. MediFlex",
+            "pNumber": "2020/GTR/04/06",
+            "keywords": [
+                "krew",
+                "ciśnienie",
+                "choroba"
+            ],
+            "isFinished": true,
+            "financialFunds": "45000",
+            "authors": [
+                "Zapadka Damian",
+                "Zawias Monika",
+                "Blon Paweł"
+            ],
+            "institutionData": "MediFlex"
+        },
+        {
+            "id": 4,
+            "projectType": "Badawczy",
+            "dataStarted": "2023-04-01",
+            "dataCompleted": null,
+            "title": "Zwyrodniania tkanki chrzęstnej",
+            "dataSources": "Lab. H. Polewskiego",
+            "pNumber": "2023/POR/04/01",
+            "keywords": [
+                "tkanka",
+                "stawy",
+                "chrząstka"
+            ],
+            "isFinished": false,
+            "financialFunds": "60000",
+            "authors": [
+                "Polak Natalia",
+                "Weosły Marek",
+                "Zawias Barbara"
+            ],
+            "institutionData": "Uniwersytet Szczeciński"
+        },
+        {
+            "id": 5,
+            "projectType": "Naukowy",
+            "dataStarted": "2022-12-29",
+            "dataCompleted": "2023-02-16",
+            "title": "Pomiary biosygnałów",
+            "dataSources": "Lab. EKG&EEG",
+            "pNumber": "2022/ETR/12/29",
+            "keywords": [
+                "serce",
+                "EKG",
+                "EEG"
+            ],
+            "isFinished": true,
+            "financialFunds": "60000",
+            "authors": [
+                "Kowal Weronika",
+                "Nowak Mirosław",
+                "Klamka Danie;"
+            ],
+            "institutionData": "Uniwersytet Medyczny Warszawa"
+        }
+    ],
+    "research": [
+        {
+            "id": 1,
+            "dataStarted": "2023-01-29",
+            "dataCompleted": null,
+            "testName": "Pomiar stanu powierzchni stawowych",
+            "minimalAge": 21,
+            "isFinished": false,
+            "mainDoctor": "Zawias Andrzej",
+            "projectId": 2
+        },
+        {
+            "id": 2,
+            "dataStarted": "2022-08-28",
+            "dataCompleted": "2022-11-10",
+            "testName": "Jakość komórek macierzystych",
+            "minimalAge": 30,
+            "isFinished": true,
+            "mainDoctor": "Szalka Aleksander",
+            "projectId": 1
+        },
+        {
+            "id": 3,
+            "dataStarted": "2023-04-01",
+            "dataCompleted": null,
+            "testName": "Stosowanie leków sterydowych",
+            "minimalAge": 45,
+            "isFinished": false,
+            "mainDoctor": "Czajka Aleksandra",
+            "projectId": 4
+        },
+        {
+            "id": 4,
+            "dataStarted": "2020-04-06",
+            "dataCompleted": "2020-05-30",
+            "testName": "Ciśnienie tętnicze",
+            "minimalAge": 55,
+            "isFinished": true,
+            "mainDoctor": "Szalik Dawid",
+            "projectId": 3
+        },
+        {
+            "id": 5,
+            "dataStarted": "2022-12-29",
+            "dataCompleted": "2023-02-16",
+            "testName": "Pomiar EKG",
+            "minimalAge": 25,
+            "isFinished": true,
+            "mainDoctor": "Kardio Anna",
+            "projectId": 5
+        },
+        {
+            "id": 6,
+            "dataStarted": "2023-04-09",
+            "dataCompleted": null,
+            "testName": "Pomiar chrząstek TK",
+            "minimalAge": 30,
+            "isFinished": false,
+            "mainDoctor": "Rendgen Tomasz",
+            "projectId": 4
         }
     ]
 }
