@@ -6,7 +6,7 @@ import { Box } from '@mui/material';
 
 const ListItem = (props) => {
 
-    const { Sx, children, patientData, testsData, projectsData } = props;
+    const { Sx, children, patientData, tessData, projectsData } = props;
 
     return (
         <>
@@ -15,18 +15,6 @@ const ListItem = (props) => {
                     <Avatar>
                         {children}
                     </Avatar>
-                    {/* <Typography sx={{ marginLeft: '10px' }}> */}
-                    {/* {testsData && testsData} */}
-                    {/* {patientData && `${patientData.surname} ${patientData.name}`}
-                        {projectsData && projectsData} */}
-                    {/* </Typography> */}
-
-                    {testsData &&
-                        <Typography sx={{ marginLeft: '10px' }}>
-                            {testsData}
-                        </Typography>
-                    }
-
                     {projectsData &&
                         <Typography sx={{ marginLeft: '10px' }}>
                             {projectsData}
@@ -40,6 +28,13 @@ const ListItem = (props) => {
                             </Typography>
                             <Typography align="center" sx={{ width: '300px', fontSize: '13px' }}>
                                 {`${patientData.email}`}
+                            </Typography>
+                        </Box>
+                    }
+                    {tessData &&
+                        <Box sx={{ width: 'calc(100% - 45px)', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', alignItems: 'center' }} >
+                            <Typography align="center" sx={{ width: '300px', fontSize: '13px' }}>
+                                {`${tessData.testName}`}
                             </Typography>
                         </Box>
                     }

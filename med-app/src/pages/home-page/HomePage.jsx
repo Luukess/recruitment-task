@@ -10,15 +10,17 @@ import PersonIcon from '@mui/icons-material/Person';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import ListItem from './components/ListItem'
-import { handleGetPatients } from "../../services/api";
+import { handleGetPatients, handleGetTests } from "../../services/api";
 
 const HomePage = () => {
 
     const [patientSort, setPatientSort] = useState('asc');
-    const [testsSort, setTestSort] = useState('asc');
-
     const [patientsArray, setPatientsArray] = useState([]);
     const [patientsError, setPatientsError] = useState({ error: false, message: '' });
+
+    const [testsSort, setTestSort] = useState('ongoing');
+    const [testsArray, setTestsArray] = useState([]);
+    const [testsError, setTestsError] = useState({ error: false, message: '' });
 
     const handleGetAllPatients = async () => {
         try {
@@ -31,14 +33,26 @@ const HomePage = () => {
             setPatientsError({ error: true, message: 'Problem z serwerem!' });
         };
     };
-    
+
+    const handleGetAllTests = async () => {
+        try {
+            const testsResponse = await handleGetTests();
+            if (testsResponse.status === 200) {
+                setTestsArray(testsResponse.data);
+            }
+        } catch (e) {
+            console.log(e);
+            setTestsError({ error: true, message: 'Problem z serwerem' });
+        }
+    }
+
     const sortPatients = (data, sortMethod) => {
-        if(data.length > 0){
-            if(sortMethod === 'asc'){
-                const getData = [...data].sort((a,b) => (a.surname.toLowerCase() > b.surname.toLowerCase()) ? 1 : (a.surname.toLowerCase() < b.surname.toLowerCase()) ? -1 : 0);
+        if (data.length > 0) {
+            if (sortMethod === 'asc') {
+                const getData = [...data].sort((a, b) => (a.surname.toLowerCase() > b.surname.toLowerCase()) ? 1 : (a.surname.toLowerCase() < b.surname.toLowerCase()) ? -1 : 0);
                 setPatientsArray(getData);
-            }else if(sortMethod === 'desc'){
-                const getData = [...data].sort((a,b) => (a.surname.toLowerCase() < b.surname.toLowerCase()) ? 1 : (a.surname.toLowerCase() > b.surname.toLowerCase()) ? -1 : 0);
+            } else if (sortMethod === 'desc') {
+                const getData = [...data].sort((a, b) => (a.surname.toLowerCase() < b.surname.toLowerCase()) ? 1 : (a.surname.toLowerCase() > b.surname.toLowerCase()) ? -1 : 0);
                 setPatientsArray(getData);
             };
         };
@@ -50,6 +64,7 @@ const HomePage = () => {
 
     useEffect(() => {
         handleGetAllPatients();
+        handleGetAllTests();
     }, []);
 
     return (
@@ -61,7 +76,7 @@ const HomePage = () => {
                             Pacjenci
                         </Typography>
                         <Box component='div' sx={Sx.chartBoxSx}>
-                            <Chart />
+                            <Chart patientsData={patientsArray} />
                         </Box>
                     </Box>
                 </Grid>
@@ -117,7 +132,7 @@ const HomePage = () => {
                             Badania
                         </Typography>
                         <Box sx={Sx.chartBoxSx}>
-                            <Chart />
+                            <Chart testsData={testsArray} />
                         </Box>
                     </Box>
                 </Grid>
@@ -132,24 +147,38 @@ const HomePage = () => {
                                 value={testsSort}
                                 onChange={(e) => setTestSort(e.target.value)}
                             >
-                                <MenuItem value={'asc'}>Sort. rosnąco</MenuItem>
-                                <MenuItem value={'desc'}>Sort. malejąco</MenuItem>
+                                <MenuItem value={'all'}>Wszystkie</MenuItem>
+                                <MenuItem value={'ongoing'}>W trakcie</MenuItem>
+                                <MenuItem value={'finished'}>Zakończone</MenuItem>
                             </Select>
                         </Box>
                         <Box component='div' sx={Sx.listBoxSx}>
                             <Grid container spacing={1}>
-                                <ListItem Sx={Sx} testsData={'dane badań'}>
-                                    <EnhancedEncryptionIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} testsData={'dane badań'}>
-                                    <EnhancedEncryptionIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} testsData={'dane badań'}>
-                                    <EnhancedEncryptionIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} testsData={'dane badań'}>
-                                    <EnhancedEncryptionIcon />
-                                </ListItem>
+                                {!testsError.error ?
+                                    <>
+                                        {testsArray.length > 0 ? testsArray?.map((testData, i) => (
+                                            <ListItem key={i} Sx={Sx} tessData={testData}>
+                                                <EnhancedEncryptionIcon />
+                                            </ListItem>
+                                        ))
+                                            :
+
+                                            <Box component='div' sx={Sx.comunicateBoxSx}>
+                                                <Typography>
+                                                    Brak dancyh
+                                                </Typography>
+                                            </Box>
+                                        }
+                                    </>
+                                    :
+                                    <>
+                                        <Box component='div' sx={Sx.comunicateBoxSx}>
+                                            <Typography>
+                                                {testsError.message}
+                                            </Typography>
+                                        </Box>
+                                    </>
+                                }
                             </Grid>
                         </Box>
                     </Box>

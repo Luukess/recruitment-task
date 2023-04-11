@@ -12,3 +12,7 @@ const instanceConnectApi = axios.create({
 export const handleGetPatients = async () => {
     return instanceConnectApi.get('/patients');
 };
+
+export const handleGetTests = async () => {
+    return instanceConnectApi.get('/research');
+}
