@@ -14,6 +14,7 @@ export const Sx = {
     },
     chartBoxSx: {
         width: '100%',
+        minHeight: '244px',
         display: 'flex',
         justifyContent: 'center',
         alignContent: 'center'
@@ -23,7 +24,7 @@ export const Sx = {
     },
     listGridBoxSx: {
         backgroundColor: '#C4E0F3',
-        height: '255px',
+        height: '275px',
         borderRadius: '5px',
     },
     listGridBoxSortSx: {
@@ -39,7 +40,7 @@ export const Sx = {
     },
     elementListSx: {
         padding: '5px 10px',
-        height: '40px',
+        // height: '40px',
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'center',

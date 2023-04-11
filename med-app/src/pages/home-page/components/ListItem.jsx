@@ -6,7 +6,7 @@ import { Box } from '@mui/material';
 
 const ListItem = (props) => {
 
-    const { Sx, children, patientData, tessData, projectsData } = props;
+    const { Sx, children, patientData, tessData, projectData } = props;
 
     return (
         <>
@@ -15,12 +15,19 @@ const ListItem = (props) => {
                     <Avatar>
                         {children}
                     </Avatar>
-                    {projectsData &&
-                        <Typography sx={{ marginLeft: '10px' }}>
-                            {projectsData}
-                        </Typography>
+                    {projectData &&
+                        <Box sx={{ width: 'calc(100% - 45px)', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                            <Typography align="center" sx={{ width: '300px', fontSize: '13px', padding: '4px 0' }}>
+                                {projectData.projectType}
+                            </Typography>
+                            <Typography align="center" sx={{ width: '300px', fontSize: '13px', padding: '4px 0' }}>
+                                {`Nazwa projektu: ${projectData.title}`}
+                            </Typography>
+                            <Typography align="center" sx={{ width: '300px', fontSize: '13px', padding: '4px 0' }}>
+                                {`Data Rozpocząecia: ${projectData.dataStarted}`}
+                            </Typography>
+                        </Box>
                     }
-
                     {patientData &&
                         <Box sx={{ width: 'calc(100% - 45px)', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', alignItems: 'center' }} >
                             <Typography align="center" sx={{ width: '300px', fontSize: '13px' }}>

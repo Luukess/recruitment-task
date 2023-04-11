@@ -15,4 +15,8 @@ export const handleGetPatients = async () => {
 
 export const handleGetTests = async () => {
     return instanceConnectApi.get('/research');
-}
+};
+
+export const handleGetProjects = async () => {
+    return instanceConnectApi.get('/projects ');
+};

@@ -10,7 +10,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import ListItem from './components/ListItem'
-import { handleGetPatients, handleGetTests } from "../../services/api";
+import { handleGetPatients, handleGetProjects, handleGetTests } from "../../services/api";
 
 const HomePage = () => {
 
@@ -21,6 +21,9 @@ const HomePage = () => {
     const [testsSort, setTestSort] = useState('ongoing');
     const [testsArray, setTestsArray] = useState([]);
     const [testsError, setTestsError] = useState({ error: false, message: '' });
+
+    const [projectsArray, setProjectsArray] = useState([]);
+    const [projectsError, setProjectsError] = useState({ error: false, message: '' });
 
     const handleGetAllPatients = async () => {
         try {
@@ -39,12 +42,24 @@ const HomePage = () => {
             const testsResponse = await handleGetTests();
             if (testsResponse.status === 200) {
                 setTestsArray(testsResponse.data);
-            }
+            };
         } catch (e) {
             console.log(e);
             setTestsError({ error: true, message: 'Problem z serwerem' });
-        }
-    }
+        };
+    };
+
+    const handleGetAllProjects = async () => {
+        try {
+            const responseProjects = await handleGetProjects();
+            if (responseProjects.status === 200) {
+                setProjectsArray(responseProjects.data);
+            };
+        } catch (e) {
+            console.log(e);
+            setProjectsError({ error: true, message: 'Problem z serwerem' });
+        };
+    };
 
     const sortPatients = (data, sortMethod) => {
         if (data.length > 0) {
@@ -65,6 +80,7 @@ const HomePage = () => {
     useEffect(() => {
         handleGetAllPatients();
         handleGetAllTests();
+        handleGetAllProjects();
     }, []);
 
     return (
@@ -187,29 +203,36 @@ const HomePage = () => {
                     <Box component='div' sx={Sx.listGridBoxSx}>
                         <Box component='div' sx={{ padding: '10px' }}>
                             <Typography variant="h6">
-                                Projekty badawcze
+                                Projekty
                             </Typography>
                         </Box>
                         <Box component='div' sx={Sx.listBoxSx}>
                             <Grid container spacing={1}>
-                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
-                                    <BiotechIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
-                                    <BiotechIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
-                                    <BiotechIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
-                                    <BiotechIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
-                                    <BiotechIcon />
-                                </ListItem>
-                                <ListItem Sx={Sx} projectsData={'dane projektów'}>
-                                    <BiotechIcon />
-                                </ListItem>
+                                {!projectsError.error ?
+                                    <>
+                                        {projectsArray.length > 0 ? projectsArray?.map((projectData, i) => (
+                                            <ListItem key={i} Sx={Sx} projectData={projectData}>
+                                                <BiotechIcon />
+                                            </ListItem>
+                                        ))
+                                            :
+
+                                            <Box component='div' sx={Sx.comunicateBoxSx}>
+                                                <Typography>
+                                                    Brak dancyh
+                                                </Typography>
+                                            </Box>
+                                        }
+                                    </>
+                                    :
+                                    <>
+                                        <Box component='div' sx={Sx.comunicateBoxSx}>
+                                            <Typography>
+                                                {projectsError.message}
+                                            </Typography>
+                                        </Box>
+                                    </>
+                                }
                             </Grid>
                         </Box>
                     </Box>
