@@ -6,7 +6,6 @@ import { Sx } from "./filtercomponent.style";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { DesktopDatePicker } from '@mui/x-date-pickers';
 
 
 const FilterComponent = (props) => {
