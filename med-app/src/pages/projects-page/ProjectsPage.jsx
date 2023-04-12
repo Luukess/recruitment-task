@@ -89,10 +89,10 @@ const ProjectsPage = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <Box component='div' sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: 'red', alignItems: 'center', padding: '10px'}}>
+                    <Box component='div' sx={Sx.paginationContainerSx}>
                         <Box component='div' >
                             <Stack spacing={2}>
-                                <Pagination count={countPages} onChange={handlePagination} />
+                                <Pagination count={countPages} onChange={handlePagination} color="primary" />
                             </Stack>
                         </Box>
                     </Box>
