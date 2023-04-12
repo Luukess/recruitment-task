@@ -130,18 +130,9 @@
             "title": "Badania nad komórkami macierzystymi",
             "dataSources": "Lab. Białystok",
             "pNumber": "2022/ACB/08/28",
-            "keywords": [
-                "komórki",
-                "wzrost",
-                "badania"
-            ],
             "isFinished": true,
             "financialFunds": "20000",
-            "authors": [
-                "Załona Paweł",
-                "Żyłka Adam",
-                "Car Roert"
-            ],
+            "authors": "Żyłka Adam",
             "institutionData": "Uniwersytet Medyczny Białystok"
         },
         {
@@ -152,18 +143,9 @@
             "title": "Projekt endoprotezy biodra",
             "dataSources": "Ortopedia Gdańsk",
             "pNumber": "2023/BCD/01/29",
-            "keywords": [
-                "kość",
-                "biodro",
-                "proteza"
-            ],
             "isFinished": false,
             "financialFunds": "100000",
-            "authors": [
-                "Gus Łukasz",
-                "Pawlik Ewelina",
-                "Wtorek Adam"
-            ],
+            "authors": "Pawlik Ewelina",
             "institutionData": "Uniwersytet Gdański"
         },
         {
@@ -174,18 +156,9 @@
             "title": "Badania układu krwionośnego",
             "dataSources": "Lab. MediFlex",
             "pNumber": "2020/GTR/04/06",
-            "keywords": [
-                "krew",
-                "ciśnienie",
-                "choroba"
-            ],
             "isFinished": true,
             "financialFunds": "45000",
-            "authors": [
-                "Zapadka Damian",
-                "Zawias Monika",
-                "Blon Paweł"
-            ],
+            "authors": "Zapadka Damian",
             "institutionData": "MediFlex"
         },
         {
@@ -196,18 +169,9 @@
             "title": "Zwyrodniania tkanki chrzęstnej",
             "dataSources": "Lab. H. Polewskiego",
             "pNumber": "2023/POR/04/01",
-            "keywords": [
-                "tkanka",
-                "stawy",
-                "chrząstka"
-            ],
             "isFinished": false,
             "financialFunds": "60000",
-            "authors": [
-                "Polak Natalia",
-                "Weosły Marek",
-                "Zawias Barbara"
-            ],
+            "authors": "Polak Natalia",
             "institutionData": "Uniwersytet Szczeciński"
         },
         {
@@ -218,18 +182,9 @@
             "title": "Pomiary biosygnałów",
             "dataSources": "Lab. EKG&EEG",
             "pNumber": "2022/ETR/12/29",
-            "keywords": [
-                "serce",
-                "EKG",
-                "EEG"
-            ],
             "isFinished": true,
             "financialFunds": "60000",
-            "authors": [
-                "Kowal Weronika",
-                "Nowak Mirosław",
-                "Klamka Danie;"
-            ],
+            "authors":"Nowak Mirosław",
             "institutionData": "Uniwersytet Medyczny Warszawa"
         }
     ],
