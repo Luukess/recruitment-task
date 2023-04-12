@@ -10,9 +10,9 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const FilterComponent = (props) => {
 
-    const { records, selectProjectFilter, setSelectProjectFilter, selectStartDate, setSelectStartDate, selectState, setSelectState, onClickAddProject } = props;
+    const { projectsArray, selectProjectFilter, setSelectProjectFilter, selectStartDate, setSelectStartDate, selectState, setSelectState, onClickAddProject } = props;
 
-    const filteredTypes = [...handleFilterProjectTypes(records)];
+    const filteredTypes = [...handleFilterProjectTypes(projectsArray)];
 
     return (
         <Box component='div' sx={Sx.filterMainBox}>

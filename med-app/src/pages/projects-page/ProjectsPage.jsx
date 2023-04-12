@@ -60,13 +60,13 @@ const ProjectsPage = () => {
                 openModalAddProject={openModalAddProject}
                 onClickAddProject={onClickAddProject}
             >
-                    <AddProjectForm />
+                <AddProjectForm />
             </FormModal>
             <Container >
                 <Box sx={Sx.mainBoxSx} >
                     <Box component='div'>
                         <FilterComponent
-                            records={records}
+                            projectsArray={projectsArray}
                             selectProjectFilter={selectProjectFilter}
                             setSelectProjectFilter={setSelectProjectFilter}
                             selectStartDate={selectStartDate}
