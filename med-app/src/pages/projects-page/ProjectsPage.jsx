@@ -7,6 +7,7 @@ import { Sx } from "./projectspage.style";
 import FilterComponent from "./components/FilterComponent";
 import { handleFilterProjects } from "../../utils/filteringFunction";
 import FormModal from "./components/formModal/FormModal";
+import AddProjectForm from "./components/addProjectForm/AddProjectForm";
 
 
 const ProjectsPage = () => {
@@ -58,7 +59,9 @@ const ProjectsPage = () => {
             <FormModal
                 openModalAddProject={openModalAddProject}
                 onClickAddProject={onClickAddProject}
-            />
+            >
+                    <AddProjectForm />
+            </FormModal>
             <Container >
                 <Box sx={Sx.mainBoxSx} >
                     <Box component='div'>
