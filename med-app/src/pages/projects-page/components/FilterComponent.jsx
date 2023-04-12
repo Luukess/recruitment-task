@@ -6,6 +6,8 @@ import { Sx } from "./filtercomponent.style";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers';
+
 
 const FilterComponent = (props) => {
 
@@ -28,11 +30,26 @@ const FilterComponent = (props) => {
                     <Box component='div'>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker
-                                slotProps={{ textField: { size: 'small', variant: "filled" } }}
+                                slotProps={{
+                                    textField: {
+                                        size: 'small',
+                                        variant: "filled",
+                                    },
+                                    actionBar: {
+                                        actions: ['clear'],
+                                    },
+                                }}
                                 sx={Sx.inputsSx}
                                 label='Data rozpoczęcia'
                                 usePickerValue={selectStartDate}
-                                onChange={(value) => { setSelectStartDate(value.$d.toISOString().split('T')[0]) }}
+                                onChange={(value) => { 
+                                    if(value !== null){
+                                        setSelectStartDate(value.$d.toISOString().split('T')[0])
+                                    }else{
+                                        setSelectStartDate('')
+                                    }
+                                 }}
+
                             />
                         </LocalizationProvider>
                     </Box>
@@ -45,7 +62,7 @@ const FilterComponent = (props) => {
                     </Select>
                 </Grid>
                 <Grid xs={12} sm={6} md={3} sx={Sx.gridButtonSx}>
-                        <Button sx={Sx.inputsSx} variant="contained">Dodaj projekt</Button>
+                    <Button sx={Sx.inputsSx} variant="contained">Dodaj projekt</Button>
                 </Grid>
             </Grid>
         </Box>

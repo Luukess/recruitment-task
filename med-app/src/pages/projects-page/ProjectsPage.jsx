@@ -5,6 +5,7 @@ import {
 import { handleGetProjects } from "../../services/api";
 import { Sx } from "./projectspage.style";
 import FilterComponent from "./components/FilterComponent";
+import { handleFilterProjects } from "../../utils/filteringFunction";
 
 
 const ProjectsPage = () => {
@@ -15,13 +16,16 @@ const ProjectsPage = () => {
     const [selectProjectFilter, setSelectProjectFilter] = useState('all');
     const [selectStartDate, setSelectStartDate] = useState('');
     const [selectState, setSelectState] = useState('all');
-    console.log(selectStartDate)
+
+    const filteredProjects = [...handleFilterProjects(projectsArray, selectProjectFilter, selectStartDate, selectState)];
+
     const [currentPage, setCurrentPage] = useState(1);
     const recordsOnPage = 4;
     const lastIndex = currentPage * recordsOnPage;
     const firstIndex = lastIndex - recordsOnPage;
-    const records = projectsArray.slice(firstIndex, lastIndex);
-    const countPages = Math.ceil(projectsArray.length / recordsOnPage)
+    const records = filteredProjects.slice(firstIndex, lastIndex);
+    const countPages = Math.ceil(filteredProjects.length / recordsOnPage)
+
 
     const handleGetAllProjects = async () => {
         try {

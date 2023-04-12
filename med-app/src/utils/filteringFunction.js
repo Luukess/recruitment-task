@@ -15,3 +15,30 @@ export const handleFilterProjectTypes = (data) => {
     });
     return getProjects;
 };
+
+
+export const handleFilterProjects = (data, projectType, startDate, projectState ) => {
+    let getProjects = data;
+
+    if(projectType !== 'all'){
+        getProjects = getProjects.filter((element) => {
+            return element.projectType === projectType;
+        });
+    };
+
+    if(startDate){
+        getProjects = getProjects.filter((element) => {
+            return element.dataStarted >= startDate;
+        });
+    }else{
+        getProjects = getProjects;
+    }
+
+    if(projectState !== 'all'){
+        getProjects = getProjects.filter((element) => {
+            return element.isFinished === projectState
+        });
+    };
+
+    return getProjects;
+};
