@@ -10,7 +10,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const FilterComponent = (props) => {
 
-    const { records, selectProjectFilter, setSelectProjectFilter, selectStartDate, setSelectStartDate, selectState, setSelectState } = props;
+    const { records, selectProjectFilter, setSelectProjectFilter, selectStartDate, setSelectStartDate, selectState, setSelectState, onClickAddProject } = props;
 
     const filteredTypes = [...handleFilterProjectTypes(records)];
 
@@ -61,7 +61,7 @@ const FilterComponent = (props) => {
                     </Select>
                 </Grid>
                 <Grid xs={12} sm={6} md={3} sx={Sx.gridButtonSx}>
-                    <Button sx={Sx.inputsSx} variant="contained">Dodaj projekt</Button>
+                    <Button sx={Sx.inputsSx} variant="contained" type="button" onClick={() => onClickAddProject()}>Dodaj projekt</Button>
                 </Grid>
             </Grid>
         </Box>

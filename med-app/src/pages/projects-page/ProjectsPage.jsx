@@ -6,12 +6,14 @@ import { handleGetProjects } from "../../services/api";
 import { Sx } from "./projectspage.style";
 import FilterComponent from "./components/FilterComponent";
 import { handleFilterProjects } from "../../utils/filteringFunction";
+import FormModal from "./components/formModal/FormModal";
 
 
 const ProjectsPage = () => {
 
     const [projectsArray, setProjectsArray] = useState([]);
     const [projectsError, setProjectsError] = useState({ error: false, message: '' });
+    const [openModalAddProject, setOpenModalAddProject] = useState(false);
 
     const [selectProjectFilter, setSelectProjectFilter] = useState('all');
     const [selectStartDate, setSelectStartDate] = useState('');
@@ -26,6 +28,9 @@ const ProjectsPage = () => {
     const records = filteredProjects.slice(firstIndex, lastIndex);
     const countPages = Math.ceil(filteredProjects.length / recordsOnPage)
 
+    const onClickAddProject = () => {
+        setOpenModalAddProject(!openModalAddProject);
+    };
 
     const handleGetAllProjects = async () => {
         try {
@@ -50,6 +55,10 @@ const ProjectsPage = () => {
 
     return (
         <>
+            <FormModal
+                openModalAddProject={openModalAddProject}
+                onClickAddProject={onClickAddProject}
+            />
             <Container >
                 <Box sx={Sx.mainBoxSx} >
                     <Box component='div'>
@@ -61,11 +70,12 @@ const ProjectsPage = () => {
                             setSelectStartDate={setSelectStartDate}
                             selectState={selectState}
                             setSelectState={setSelectState}
+                            onClickAddProject={onClickAddProject}
                         />
                     </Box>
 
                     <Box component='div' sx={Sx.tableBoxSx}>
-                        <TableContainer sx={{height: '100%'}} component={Paper} aria-label="projects table">
+                        <TableContainer sx={{ height: '100%' }} component={Paper} aria-label="projects table">
                             <Table>
                                 <TableHead>
                                     <TableRow>
