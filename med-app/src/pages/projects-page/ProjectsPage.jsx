@@ -4,12 +4,15 @@ import {
 } from '@mui/material';
 import { handleGetProjects } from "../../services/api";
 import { Sx } from "./projectspage.style";
+import FilterComponent from "./components/FilterComponent";
 
 
 const ProjectsPage = () => {
 
     const [projectsArray, setProjectsArray] = useState([]);
     const [projectsError, setProjectsError] = useState({ error: false, message: '' });
+
+    const [selectProjectFilter, setSelectProjectFilter] = useState('all');
 
     const [currentPage, setCurrentPage] = useState(1);
     const recordsOnPage = 4;
@@ -43,6 +46,13 @@ const ProjectsPage = () => {
         <>
             <Container >
                 <Box sx={{ bgcolor: '#cfe8fc', height: 'calc(100vh - 58px)' }} >
+                    <Box component='div'>
+                        <FilterComponent
+                            records={records}
+                            selectProjectFilter={selectProjectFilter}
+                            setSelectProjectFilter={setSelectProjectFilter}
+                        />
+                    </Box>
                     <TableContainer component={Paper} aria-label="projects table">
                         <Table>
                             <TableHead>

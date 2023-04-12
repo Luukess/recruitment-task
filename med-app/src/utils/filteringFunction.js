@@ -7,4 +7,11 @@ export const handleFilterTests = (data, selectedMethod) => {
         allData = allData.filter((element) => element.isFinished === true);
     }
     return allData;
-}
+};
+
+export const handleFilterProjectTypes = (data) => {
+    const getProjects = data.map((element) => element.projectType).filter((element, idx, arr) => {
+        return arr.indexOf(element) === idx;
+    });
+    return getProjects;
+};
