@@ -6,12 +6,13 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { LoginContext } from '../../contexts/loginContext';
 import ScienceIcon from '@mui/icons-material/Science';
 import Grid from '@mui/material/Unstable_Grid2';
+import { useNavigate } from 'react-router-dom';
 
 const Menu = () => {
 
     const { loggedState, setLoggedState } = useContext(LoginContext)
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+    const navigate = useNavigate();
     const handleLogOutUser = () => setLoggedState(!loggedState);
 
     return (
@@ -47,12 +48,12 @@ const Menu = () => {
                             <Box component='div' sx={{ padding: '10px' }}>
                                 <Grid container spacing={4}>
                                     <Grid xs={12}>
-                                        <Button sx={Sx.navLinkSx} variant="contained" size='small' component='a'>
+                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => navigate('/app/home')} >
                                             Strona główna
                                         </Button>
                                     </Grid>
                                     <Grid xs={12}>
-                                        <Button sx={Sx.navLinkSx} variant="contained" size='small'component='a'>
+                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => navigate('/app/projects')} >
                                             Projekty
                                         </Button>
                                     </Grid>

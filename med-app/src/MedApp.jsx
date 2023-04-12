@@ -7,6 +7,7 @@ import { LoginContext } from './contexts/loginContext';
 import Toastify from './components/toastify/Toastify';
 import HomePage from './pages/home-page/HomePage';
 import ProtectedRoute from './components/protectedroute/ProtectedRoute';
+import ProjectsPage from './pages/projects-page/ProjectsPage';
 
 function MedApp() {
 
@@ -29,6 +30,7 @@ function MedApp() {
                     <Route exact path='/login' element={<LoginPage />} />
                     <Route element={<ProtectedRoute />} >
                         <Route path='/app/home' element={<HomePage />} />
+                        <Route path='/app/projects' element={<ProjectsPage />} />
                     </Route>
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>
