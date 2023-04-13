@@ -24,7 +24,7 @@ const ListItem = (props) => {
                                 {`Nazwa projektu: ${projectData.title}`}
                             </Typography>
                             <Typography align="center" sx={{ width: '300px', fontSize: '13px', padding: '4px 0' }}>
-                                {`Data Rozpocząecia: ${projectData.dataStarted}`}
+                                {`Data Rozpocząecia: ${projectData.dateStarted}`}
                             </Typography>
                         </Box>
                     }
