@@ -13,6 +13,7 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ProjectDetails from "./components/projectDetails/ProjectDetails";
 import { handleErrorToast, handleSuccessToast } from "../../components/toastify/Toastify";
+import UpdateForm from "./components/updateForm/UpdateForm";
 
 
 const ProjectsPage = () => {
@@ -21,6 +22,7 @@ const ProjectsPage = () => {
     const [projectsError, setProjectsError] = useState({ error: false, message: '' });
     const [openModalAddProject, setOpenModalAddProject] = useState(false);
     const [openModalWithDetails, setOpenModalWithDetails] = useState(false);
+    const [opneModalWithUpdateForm, setOpenModalWithUpdateForm] = useState(false);
     const [getProjectId, setGetProjectId] = useState(null);
 
     const [selectProjectFilter, setSelectProjectFilter] = useState('all');
@@ -44,6 +46,10 @@ const ProjectsPage = () => {
         setOpenModalWithDetails(!openModalWithDetails);
     };
 
+    const onClickCloseUpdateProject = () => {
+        setOpenModalWithUpdateForm(!opneModalWithUpdateForm)
+    };
+
     const handleGetAllProjects = async () => {
         try {
             const projectsResponse = await handleGetProjects();
@@ -57,10 +63,10 @@ const ProjectsPage = () => {
     };
 
     const handleRemoveProject = async (id) => {
-        try{
+        try {
             const projectResponse = await handleDeleteProject(id);
             console.log(projectResponse.status);
-            if(projectResponse.status === 200){
+            if (projectResponse.status === 200) {
                 handleSuccessToast('Projekt usunięto');
                 setProjectsArray((data) => {
                     const restData = data.filter((project) => {
@@ -69,7 +75,7 @@ const ProjectsPage = () => {
                     return restData;
                 });
             }
-        }catch(e){
+        } catch (e) {
             console.log(e);
             handleErrorToast('Usunięcie projektu nie powiodło się');
         }
@@ -85,10 +91,10 @@ const ProjectsPage = () => {
     }, []);
 
     useEffect(() => {
-        if(currentPage > countPages){
+        if (currentPage > countPages) {
             setCurrentPage(1);
         }
-    },[countPages, countPages]);
+    }, [countPages, countPages]);
 
     return (
         <>
@@ -106,6 +112,16 @@ const ProjectsPage = () => {
                 title={'Informacje'}
             >
                 <ProjectDetails
+                    projectId={getProjectId}
+                />
+            </FormModal>
+
+            <FormModal
+                openModal={opneModalWithUpdateForm}
+                onClickClose={onClickCloseUpdateProject}
+                title={'Edycja'}
+            >
+                <UpdateForm
                     projectId={getProjectId}
                 />
             </FormModal>
@@ -144,13 +160,13 @@ const ProjectsPage = () => {
                                         {records?.map((project, i) => (
                                             <TableRow key={i}>
                                                 <TableCell sx={{ textAlign: 'center' }}>
-                                                    <IconButton onClick={() => {onClickCloseDetails(), setGetProjectId(project.id)}}>
+                                                    <IconButton onClick={() => { onClickCloseDetails(); setGetProjectId(project.id) }}>
                                                         <MoreHorizIcon sx={{ fontSize: '16px' }} />
                                                     </IconButton>
-                                                    <IconButton>
+                                                    <IconButton onClick={() => {onClickCloseUpdateProject(); setGetProjectId(project.id)}}>
                                                         <UpgradeIcon sx={{ fontSize: '16px' }} />
                                                     </IconButton>
-                                                    <IconButton onClick={() => {handleRemoveProject(project.id)}}>
+                                                    <IconButton onClick={() => { handleRemoveProject(project.id) }}>
                                                         <DeleteIcon sx={{ fontSize: '16px' }} />
                                                     </IconButton>
                                                 </TableCell>
