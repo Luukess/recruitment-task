@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-    Container, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Pagination, Stack, Typography
+    Container, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Pagination, Stack, Typography, IconButton
 } from '@mui/material';
 import { handleGetProjects } from "../../services/api";
 import { Sx } from "./projectspage.style";
@@ -8,6 +8,9 @@ import FilterComponent from "./components/FilterComponent";
 import { handleFilterProjects } from "../../utils/filteringFunction";
 import FormModal from "./components/formModal/FormModal";
 import AddProjectForm from "./components/addProjectForm/AddProjectForm";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import UpgradeIcon from '@mui/icons-material/Upgrade';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const ProjectsPage = () => {
@@ -23,7 +26,7 @@ const ProjectsPage = () => {
     const filteredProjects = [...handleFilterProjects(projectsArray, selectProjectFilter, selectStartDate, selectState)];
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsOnPage = 7;
+    const recordsOnPage = 6;
     const lastIndex = currentPage * recordsOnPage;
     const firstIndex = lastIndex - recordsOnPage;
     const records = filteredProjects.slice(firstIndex, lastIndex);
@@ -83,6 +86,7 @@ const ProjectsPage = () => {
                             <Table>
                                 <TableHead>
                                     <TableRow>
+                                        <TableCell sx={Sx.tableCellSx} align="center"></TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center">Typ projektu</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center">Tytuł</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center" >Alias</TableCell>
@@ -95,6 +99,17 @@ const ProjectsPage = () => {
                                     <TableBody>
                                         {records?.map((project, i) => (
                                             <TableRow key={i}>
+                                                <TableCell sx={{textAlign: 'center'}}>
+                                                    <IconButton>
+                                                        <MoreHorizIcon sx={{fontSize: '16px'}} />
+                                                    </IconButton>
+                                                    <IconButton>
+                                                        <UpgradeIcon sx={{fontSize: '16px'}} />
+                                                    </IconButton>
+                                                    <IconButton>
+                                                        <DeleteIcon sx={{fontSize: '16px'}} />
+                                                    </IconButton>
+                                                </TableCell>
                                                 <TableCell align="center">
                                                     {project.projectType}
                                                 </TableCell>

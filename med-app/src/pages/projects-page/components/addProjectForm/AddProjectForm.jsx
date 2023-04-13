@@ -22,24 +22,19 @@ const AddProjectForm = (props) => {
     const onSubmit = async (data) => {
         try {
             console.log(data)
-            const dateStarted = data.dateStarted.split('-').reverse().join('-');
-            let dateCompleted;
-            if (data.dateCompleted) {
-                dateCompleted = data.dateCompleted.split('-').reverse().join('-');
-            } else {
-                dateCompleted = null;
+            if (data.dateCompleted === '') {
+                data.dateCompleted = null;
             }
 
             const formData = {
                 ...data,
-                dateStarted: dateStarted,
-                dateCompleted: dateCompleted,
             };
 
             const projectsResponse = await handlePostProject(formData);
             if (projectsResponse.status === 201) {
                 handleSuccessToast('Dodano nowy projekt');
                 setProjectsArray((allData) => ([...allData, { ...projectsResponse.data }]));
+                reset();
             };
 
         } catch (e) {
@@ -95,40 +90,19 @@ const AddProjectForm = (props) => {
                         <Typography variant='caption' align='center' color='error'>{errors.pNumber?.message}</Typography>
                     </Grid>
                     <Grid xs={12} sm={6} md={4}>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DateField
-                                sx={Sx.inputSx}
-                                slotProps={{
-                                    textField: {
-                                        size: 'small',
-                                        variant: "filled",
-                                    }
-                                }}
-                                format="DD-MM-YYYY"
-                                {...register('dateStarted', {
-                                    required: 'Pole jest wymagane'
-                                })}
-                            />
-                        </LocalizationProvider>
+                        <TextField sx={Sx.inputSx} InputLabelProps={{ shrink: true }} type="date" size="small" label="Data rozpoczęcia" variant="filled" error={errors.dateStarted ? true : false} {...register('dateStarted', {
+                            required: 'Pole jest wymagane'
+                        })} />
+                        <Typography variant='caption' align='center' color='error'>{errors.dateStarted?.message}</Typography>
                     </Grid>
                     <Grid xs={12} sm={6} md={4}>
                         {!hideDateInput &&
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DateField
-                                    sx={Sx.inputSx}
-                                    slotProps={{
-                                        textField: {
-                                            size: 'small',
-                                            variant: "filled",
-                                        }
-                                    }}
-                                    onChange={(e) => console.log(e.target.value)}
-                                    format="DD-MM-YYYY"
-                                    {...register('dateCompleted', {
-                                        required: 'Pole jest wymagane'
-                                    })}
-                                />
-                            </LocalizationProvider>
+                            <>
+                                <TextField sx={Sx.inputSx} InputLabelProps={{ shrink: true }} type="date" size="small" label="Data zakończenia" variant="filled" error={errors.dateCompleted ? true : false} {...register('dateCompleted', {
+                                    required: 'Pole jest wymagane'
+                                })} />
+                                <Typography variant='caption' align='center' color='error'>{errors.dateCompleted?.message}</Typography>
+                            </>
                         }
                     </Grid>
                     <Grid xs={12} sm={6} md={4}>
