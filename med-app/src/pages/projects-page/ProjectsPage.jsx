@@ -123,6 +123,7 @@ const ProjectsPage = () => {
             >
                 <UpdateForm
                     projectId={getProjectId}
+                    setProjectsArray={setProjectsArray}
                 />
             </FormModal>
 

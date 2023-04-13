@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Sx } from "./updateform.style";
 import Grid from '@mui/material/Unstable_Grid2';
 import { useForm } from "react-hook-form";
-import { handleGetProject } from "../../../../services/api";
+import { handleGetProject, handlePutProject } from "../../../../services/api";
+import { handleErrorToast, handleSuccessToast } from "../../../../components/toastify/Toastify";
 
 const UpdateForm = (props) => {
 
-    const { projectId } = props;
+    const { projectId, setProjectsArray } = props;
 
     const [defaultFormObject, setDefaultFormObject] = useState({
         title: '',
@@ -20,13 +21,13 @@ const UpdateForm = (props) => {
         isFinished: false
     });
     const [hideFinishDate, setHideFinishDate] = useState(defaultFormObject.isFinished);
+    const [fullProjectObject, setFullProjectObject] = useState(null);
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({ defaultValues: defaultFormObject });
+    const { register, handleSubmit, formState: { errors }, reset, resetField } = useForm({ defaultValues: defaultFormObject });
 
     const handleGetDataProject = async () => {
         try {
             const projectResponse = await handleGetProject(projectId);
-            console.log(projectResponse.data);
             setDefaultFormObject({
                 title: projectResponse.data.title,
                 author: projectResponse.data.author,
@@ -37,19 +38,49 @@ const UpdateForm = (props) => {
                 dateCompleted: projectResponse.data.dateCompleted,
                 isFinished: projectResponse.data.isFinished
             });
+            setFullProjectObject(projectResponse.data);
         } catch (e) {
             console.log(e)
         };
     };
-
+    console.log(hideFinishDate)
     const onSubmit = async (data) => {
-        console.log(data)
+        try{
+            if(!hideFinishDate){
+                data.dateCompleted = null;
+            }
+            const formData = {
+                ...fullProjectObject,
+                ...data,
+                isFinished: hideFinishDate
+            }
+            const projectResponse = await handlePutProject(fullProjectObject?.id, formData);
+            console.log(projectResponse.data, 'dddd')
+            if(projectResponse.status === 200){
+                handleSuccessToast('Zaktualizowano projekt');
+                setProjectsArray((data) => {
+                    const filterProjects = data.filter((project) => {
+                        return project.id !== fullProjectObject?.id;
+                    });
+                    return[...filterProjects, projectResponse.data];
+                })
+            };
 
+        }catch(e){
+            console.log(e);
+            handleErrorToast('Aktualizacja nie powiodła się');
+        }
     };
 
     useEffect(() => {
         handleGetDataProject();
     }, []);
+
+    useEffect(() => {
+        if(!hideFinishDate){
+            resetField('dateCompleted');
+        }
+    }, [hideFinishDate])
 
     useEffect(() => {
         reset(defaultFormObject);
