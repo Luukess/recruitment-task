@@ -78,11 +78,17 @@ const ProjectsPage = () => {
     const handlePagination = (event, page) => {
         setCurrentPage(page);
         setSelectProjectFilter('all');
-    }
+    };
 
     useEffect(() => {
         handleGetAllProjects();
     }, []);
+
+    useEffect(() => {
+        if(currentPage > countPages){
+            setCurrentPage(1);
+        }
+    },[countPages, countPages]);
 
     return (
         <>
