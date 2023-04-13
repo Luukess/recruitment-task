@@ -8,6 +8,7 @@ import Toastify from './components/toastify/Toastify';
 import HomePage from './pages/home-page/HomePage';
 import ProtectedRoute from './components/protectedroute/ProtectedRoute';
 import ProjectsPage from './pages/projects-page/ProjectsPage';
+import PatientsPage from './pages/patients-page/PatientsPage';
 
 function MedApp() {
 
@@ -31,6 +32,7 @@ function MedApp() {
                     <Route element={<ProtectedRoute />} >
                         <Route path='/app/home' element={<HomePage />} />
                         <Route path='/app/projects' element={<ProjectsPage />} />
+                        <Route path='/app/patients' element={<PatientsPage />} />
                     </Route>
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>

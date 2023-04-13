@@ -48,13 +48,18 @@ const Menu = () => {
                             <Box component='div' sx={{ padding: '10px' }}>
                                 <Grid container spacing={4}>
                                     <Grid xs={12}>
-                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => navigate('/app/home')} >
+                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => {navigate('/app/home'); setIsDrawerOpen(false) }} >
                                             Strona główna
                                         </Button>
                                     </Grid>
                                     <Grid xs={12}>
-                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => navigate('/app/projects')} >
+                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => {navigate('/app/projects'); setIsDrawerOpen(false)}} >
                                             Projekty
+                                        </Button>
+                                    </Grid>
+                                    <Grid xs={12}>
+                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => {navigate('/app/patients'); setIsDrawerOpen(false)}} >
+                                            Pacjenci
                                         </Button>
                                     </Grid>
                                 </Grid>
