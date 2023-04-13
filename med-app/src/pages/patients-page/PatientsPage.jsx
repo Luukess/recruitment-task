@@ -5,6 +5,8 @@ import PatientsTable from "./components/table/PatientsTable";
 import { handleGetPatients } from "../../services/api";
 import FilterPatients from "./components/filterPatients/FilterPatients";
 import { handleFilterPatients } from "../../utils/filteringFunction";
+import FormModal from "../projects-page/components/formModal/FormModal";
+import AddPatientForm from "./components/addPatientForm/AddPatientForm";
 
 const PatientsPage = () => {
 
@@ -16,6 +18,8 @@ const PatientsPage = () => {
     const [surnameFilter, setSurnameFilter] = useState('');
     const [cityFilter, setCityFilter] = useState('');
 
+    const [addPatientModal, setAddPatientModal] = useState(false);
+
     const filteredPatients = [...handleFilterPatients(patientsArray, surnameFilter, cityFilter)];
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +28,10 @@ const PatientsPage = () => {
     const firstIndex = lastIndex - recordsOnPage;
     const records = filteredPatients.slice(firstIndex, lastIndex);
     const countPages = Math.ceil(filteredPatients.length / recordsOnPage)
+
+    const onClickAddPatientModal = () =>{
+        setAddPatientModal(!addPatientModal);
+    };
 
     const handlePagination = (event, page) => {
         setCurrentPage(page);
@@ -55,12 +63,21 @@ const PatientsPage = () => {
 
     return (
         <>
+            <FormModal
+                openModal={addPatientModal}
+                onClickClose={onClickAddPatientModal}
+                title={'Dodaj pacjenta'}
+            >
+                <AddPatientForm setPatientsArray={setPatientsArray} />
+            </FormModal>
+
             <Container>
                 <Box component='div' sx={Sx.mainBoxSx}>
                     <Box component='div'>
-                        <FilterPatients 
+                        <FilterPatients
                             setSurnameFilter={setSurnameFilter}
                             setCityFilter={setCityFilter}
+                            onClickAddPatient={onClickAddPatientModal}
                         />
                     </Box>
                     <Box sx={Sx.tableBoxSx}>
