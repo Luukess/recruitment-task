@@ -9,7 +9,6 @@ const ProjectDetails = (props) => {
     const { projectId } = props;
     const [detailsData, setDetailsData] = useState(null);
 
-    console.log(detailsData)
     const handleGetInfoProject = async () => {
         try {
             const projectResponse = await handleGetProject(projectId);

@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { Sx } from "./addprojectform.style";
 import Grid from '@mui/material/Unstable_Grid2';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useForm, Controller } from "react-hook-form";
-import { DateField } from '@mui/x-date-pickers/DateField';
+import { useForm } from "react-hook-form";
 import { handlePostProject } from "../../../../services/api";
 import { handleErrorToast, handleSuccessToast } from "../../../../components/toastify/Toastify";
 
@@ -22,8 +19,8 @@ const AddProjectForm = (props) => {
     const onSubmit = async (data) => {
         try {
             console.log(data)
-            if (data.dateCompleted === '') {
-                data.dateCompleted = null;
+            if (!data.isFinished) {
+                data['dateCompleted'] = null;
             }
 
             const formData = {

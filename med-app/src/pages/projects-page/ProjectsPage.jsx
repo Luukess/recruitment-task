@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
     Container, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Pagination, Stack, Typography, IconButton
 } from '@mui/material';
-import { handleGetProjects } from "../../services/api";
+import { handleDeleteProject, handleGetProjects } from "../../services/api";
 import { Sx } from "./projectspage.style";
 import FilterComponent from "./components/FilterComponent";
 import { handleFilterProjects } from "../../utils/filteringFunction";
@@ -12,6 +12,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ProjectDetails from "./components/projectDetails/ProjectDetails";
+import { handleErrorToast, handleSuccessToast } from "../../components/toastify/Toastify";
 
 
 const ProjectsPage = () => {
@@ -21,7 +22,7 @@ const ProjectsPage = () => {
     const [openModalAddProject, setOpenModalAddProject] = useState(false);
     const [openModalWithDetails, setOpenModalWithDetails] = useState(false);
     const [getProjectId, setGetProjectId] = useState(null);
-    console.log(getProjectId)
+
     const [selectProjectFilter, setSelectProjectFilter] = useState('all');
     const [selectStartDate, setSelectStartDate] = useState('');
     const [selectState, setSelectState] = useState('all');
@@ -53,6 +54,25 @@ const ProjectsPage = () => {
             console.log(e);
             setProjectsError({ error: true, message: 'Problem z serwerem!' });
         };
+    };
+
+    const handleRemoveProject = async (id) => {
+        try{
+            const projectResponse = await handleDeleteProject(id);
+            console.log(projectResponse.status);
+            if(projectResponse.status === 200){
+                handleSuccessToast('Projekt usunięto');
+                setProjectsArray((data) => {
+                    const restData = data.filter((project) => {
+                        return project?.id !== id;
+                    });
+                    return restData;
+                });
+            }
+        }catch(e){
+            console.log(e);
+            handleErrorToast('Usunięcie projektu nie powiodło się');
+        }
     };
 
     const handlePagination = (event, page) => {
@@ -124,7 +144,7 @@ const ProjectsPage = () => {
                                                     <IconButton>
                                                         <UpgradeIcon sx={{ fontSize: '16px' }} />
                                                     </IconButton>
-                                                    <IconButton>
+                                                    <IconButton onClick={() => {handleRemoveProject(project.id)}}>
                                                         <DeleteIcon sx={{ fontSize: '16px' }} />
                                                     </IconButton>
                                                 </TableCell>
