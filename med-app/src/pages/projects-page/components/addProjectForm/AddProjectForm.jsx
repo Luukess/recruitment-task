@@ -49,7 +49,7 @@ const AddProjectForm = (props) => {
     };
 
     return (
-        <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={Sx.mainFormBox}>
+        <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={Sx.mainFormBox} autoComplete="off">
             <Box component='div' sx={{ marginBottom: '16px' }}>
                 <Grid container rowSpacing={4} spacing={2}>
                     <Grid xs={12} sm={6} md={4}>
