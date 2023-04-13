@@ -34,5 +34,9 @@ export const handleDeleteProject = async (id) => {
 };
 
 export const handlePutProject = async (id, data) => {
-    return instanceConnectApi.put(`/projects/${id}`, data)
+    return instanceConnectApi.put(`/projects/${id}`, data);
+};
+
+export const handlePostPatient = async (data) => {
+    return  instanceConnectApi.post(`/patients`, data);
 };

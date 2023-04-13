@@ -3,6 +3,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Box, Button, FormControlLabel, Radio, RadioGroup, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Sx } from "./addpatientform.style";
+import { handleErrorToast, handleSuccessToast } from "../../../../components/toastify/Toastify";
+import { handlePostPatient } from "../../../../services/api";
 
 
 const AddPatientForm = (props) => {
@@ -12,7 +14,25 @@ const AddPatientForm = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data)
+        try{
+            const formData = {
+                ...data,
+                houseNumber: parseInt(data.houseNumber),
+                apartmentNumber: parseInt(data.apartmentNumber),
+                projectId: null,
+                researchId: null
+            }
+            const patientResponse = await handlePostPatient(formData);
+            console.log(patientResponse.status);
+            if(patientResponse.status === 201){
+                handleSuccessToast('Dodano nowego pacjenta');
+                setPatientsArray((allData) => ([...allData, { ...patientResponse.data }]));
+                reset();
+            }
+        }catch(e){
+            console.log(e);
+            handleErrorToast('Dodanie pacjenta nie powiodło się')
+        }
     };
 
     return (
