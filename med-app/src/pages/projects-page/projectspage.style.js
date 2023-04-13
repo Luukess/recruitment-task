@@ -1,6 +1,6 @@
 export const Sx = {
     tableCellSx: {
-        width: 'calc(100%/6)'
+        width: 'calc(100%/10)'
     },
     paginationContainerSx: {
         display: 'flex',
@@ -10,7 +10,7 @@ export const Sx = {
         padding: '20px 10px'
     },
     mainBoxSx: {
-        height: 'calc(100vh - 58px)',
+        height: 'calc(100vh - 60px)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly'

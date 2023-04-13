@@ -24,3 +24,7 @@ export const handleGetProjects = async () => {
 export const handlePostProject = async (data) => {
     return instanceConnectApi.post('/projects', data);
 };
+
+export const handleGetProject = async (id) => {
+    return instanceConnectApi.get(`/projects/${id}`);
+};

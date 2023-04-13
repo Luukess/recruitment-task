@@ -9,13 +9,13 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const FormModal = (props) => {
 
-    const { children, openModalAddProject, onClickAddProject, title } = props;
+    const { children, openModal, onClickClose, title } = props;
 
     return (
         <>
             <Modal
-                open={openModalAddProject}
-                onClose={onClickAddProject}
+                open={openModal}
+                onClose={onClickClose}
                 closeAfterTransition
                 slots={{ backdrop: Backdrop }}
                 slotProps={{
@@ -24,13 +24,13 @@ const FormModal = (props) => {
                     },
                 }}
             >
-                <Fade in={openModalAddProject}>
+                <Fade in={openModal}>
                     <Box sx={Sx.modalBodySx}>
                         <Box component='div' sx={Sx.closeButtonContainerSx}>
-                            <Typography sx={{fontSize: '18px'}}>
+                            <Typography variant="h5">
                                 {title}
                             </Typography>
-                            <IconButton onClick={onClickAddProject}>
+                            <IconButton onClick={onClickClose}>
                                 <CloseIcon />
                             </IconButton>
                         </Box>

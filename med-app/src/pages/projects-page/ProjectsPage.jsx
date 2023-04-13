@@ -11,6 +11,7 @@ import AddProjectForm from "./components/addProjectForm/AddProjectForm";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ProjectDetails from "./components/projectDetails/ProjectDetails";
 
 
 const ProjectsPage = () => {
@@ -18,7 +19,9 @@ const ProjectsPage = () => {
     const [projectsArray, setProjectsArray] = useState([]);
     const [projectsError, setProjectsError] = useState({ error: false, message: '' });
     const [openModalAddProject, setOpenModalAddProject] = useState(false);
-
+    const [openModalWithDetails, setOpenModalWithDetails] = useState(false);
+    const [getProjectId, setGetProjectId] = useState(null);
+    console.log(getProjectId)
     const [selectProjectFilter, setSelectProjectFilter] = useState('all');
     const [selectStartDate, setSelectStartDate] = useState('');
     const [selectState, setSelectState] = useState('all');
@@ -34,6 +37,10 @@ const ProjectsPage = () => {
 
     const onClickAddProject = () => {
         setOpenModalAddProject(!openModalAddProject);
+    };
+
+    const onClickCloseDetails = () => {
+        setOpenModalWithDetails(!openModalWithDetails);
     };
 
     const handleGetAllProjects = async () => {
@@ -60,12 +67,23 @@ const ProjectsPage = () => {
     return (
         <>
             <FormModal
-                openModalAddProject={openModalAddProject}
-                onClickAddProject={onClickAddProject}
+                openModal={openModalAddProject}
+                onClickClose={onClickAddProject}
                 title={'Dodaj projekt'}
             >
                 <AddProjectForm setProjectsArray={setProjectsArray} projectsArray={projectsArray} />
             </FormModal>
+
+            <FormModal
+                openModal={openModalWithDetails}
+                onClickClose={onClickCloseDetails}
+                title={'Informacje'}
+            >
+                <ProjectDetails
+                    projectId={getProjectId}
+                />
+            </FormModal>
+
             <Container >
                 <Box sx={Sx.mainBoxSx} >
                     <Box component='div'>
@@ -92,22 +110,22 @@ const ProjectsPage = () => {
                                         <TableCell sx={Sx.tableCellSx} align="center" >Alias</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center" >Data rozp.</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center" >Data zak.</TableCell>
-                                        <TableCell sx={Sx.tableCellSx} align="center" >Stan projektu</TableCell>
+                                        <TableCell sx={Sx.tableCellSx} align="center" >Status projektu</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 {!projectsError.error &&
                                     <TableBody>
                                         {records?.map((project, i) => (
                                             <TableRow key={i}>
-                                                <TableCell sx={{textAlign: 'center'}}>
-                                                    <IconButton>
-                                                        <MoreHorizIcon sx={{fontSize: '16px'}} />
+                                                <TableCell sx={{ textAlign: 'center' }}>
+                                                    <IconButton onClick={() => {onClickCloseDetails(), setGetProjectId(project.id)}}>
+                                                        <MoreHorizIcon sx={{ fontSize: '16px' }} />
                                                     </IconButton>
                                                     <IconButton>
-                                                        <UpgradeIcon sx={{fontSize: '16px'}} />
+                                                        <UpgradeIcon sx={{ fontSize: '16px' }} />
                                                     </IconButton>
                                                     <IconButton>
-                                                        <DeleteIcon sx={{fontSize: '16px'}} />
+                                                        <DeleteIcon sx={{ fontSize: '16px' }} />
                                                     </IconButton>
                                                 </TableCell>
                                                 <TableCell align="center">
