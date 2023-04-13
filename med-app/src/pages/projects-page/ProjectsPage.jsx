@@ -60,7 +60,7 @@ const ProjectsPage = () => {
                 openModalAddProject={openModalAddProject}
                 onClickAddProject={onClickAddProject}
             >
-                <AddProjectForm />
+                <AddProjectForm setProjectsArray={setProjectsArray} projectsArray={projectsArray} />
             </FormModal>
             <Container >
                 <Box sx={Sx.mainBoxSx} >
@@ -104,11 +104,11 @@ const ProjectsPage = () => {
                                                     {project.pNumber}
                                                 </TableCell>
                                                 <TableCell align="center">
-                                                    {project.dataStarted}
+                                                    {project.dateStarted}
                                                 </TableCell>
                                                 <TableCell align="center">
-                                                    {project.dataCompleted ?
-                                                        `${project.dataCompleted}`
+                                                    {project.dateCompleted ?
+                                                        `${project.dateCompleted}`
                                                         :
                                                         'Brak'
                                                     }

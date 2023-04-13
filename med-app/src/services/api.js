@@ -20,3 +20,7 @@ export const handleGetTests = async () => {
 export const handleGetProjects = async () => {
     return instanceConnectApi.get('/projects ');
 };
+
+export const handlePostProject = async (data) => {
+    return instanceConnectApi.post('/projects', data);
+};
