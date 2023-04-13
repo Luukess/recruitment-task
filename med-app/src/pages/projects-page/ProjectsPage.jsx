@@ -23,7 +23,7 @@ const ProjectsPage = () => {
     const filteredProjects = [...handleFilterProjects(projectsArray, selectProjectFilter, selectStartDate, selectState)];
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsOnPage = 4;
+    const recordsOnPage = 7;
     const lastIndex = currentPage * recordsOnPage;
     const firstIndex = lastIndex - recordsOnPage;
     const records = filteredProjects.slice(firstIndex, lastIndex);
