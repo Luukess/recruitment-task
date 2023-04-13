@@ -59,6 +59,7 @@ const ProjectsPage = () => {
             <FormModal
                 openModalAddProject={openModalAddProject}
                 onClickAddProject={onClickAddProject}
+                title={'Dodaj projekt'}
             >
                 <AddProjectForm setProjectsArray={setProjectsArray} projectsArray={projectsArray} />
             </FormModal>

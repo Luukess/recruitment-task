@@ -13,6 +13,7 @@ export const Sx = {
     },
     closeButtonContainerSx: {
         display: 'flex',
-        justifyContent: 'flex-end'
+        justifyContent: 'space-between',
+        alignItems: 'center'
     }
 };

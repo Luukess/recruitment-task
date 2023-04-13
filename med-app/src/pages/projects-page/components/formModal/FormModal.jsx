@@ -4,12 +4,12 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import { Sx } from "./formmodal.style";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
 const FormModal = (props) => {
 
-    const { children, openModalAddProject, onClickAddProject } = props;
+    const { children, openModalAddProject, onClickAddProject, title } = props;
 
     return (
         <>
@@ -27,6 +27,9 @@ const FormModal = (props) => {
                 <Fade in={openModalAddProject}>
                     <Box sx={Sx.modalBodySx}>
                         <Box component='div' sx={Sx.closeButtonContainerSx}>
+                            <Typography sx={{fontSize: '18px'}}>
+                                {title}
+                            </Typography>
                             <IconButton onClick={onClickAddProject}>
                                 <CloseIcon />
                             </IconButton>
