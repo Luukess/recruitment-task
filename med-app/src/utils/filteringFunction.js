@@ -42,3 +42,19 @@ export const handleFilterProjects = (data, projectType, startDate, projectState 
 
     return getProjects;
 };
+
+export const handleFilterPatients = (data, surname, city) => {
+    let allData = data;
+    if(surname){
+        allData = allData.filter((patient) => {
+            return patient.surname.toLowerCase().includes(surname.toLowerCase());
+        });
+    };
+
+    if(city){
+        allData = allData.filter((patient) => {
+            return patient.city.toLowerCase().includes(city.toLowerCase());
+        });
+    };
+    return allData;
+};
