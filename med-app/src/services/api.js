@@ -46,5 +46,9 @@ export const handleGetPatient = async (id) => {
 };
 
 export const handlePutPatient = async (id, data) => {
-    return instanceConnectApi.put(`/patients/${id}`, data)
-}
+    return instanceConnectApi.put(`/patients/${id}`, data);
+};
+
+export const handleDeletePatient = async (id) => {
+    return instanceConnectApi.delete(`/patients/${id}`);
+};

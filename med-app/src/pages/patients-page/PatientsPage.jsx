@@ -138,6 +138,8 @@ const PatientsPage = () => {
                             patientsError={patientsError}
                             onClickUpdatePatientFormModal={onClickUpdatePatientFormModal}
                             setPatientId={setPatientId}
+                            patientId={patientId}
+                            setPatientsArray={setPatientsArray}
                         />
                     </Box>
                     {patientsError.error &&

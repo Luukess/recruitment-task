@@ -23,7 +23,6 @@ const AddPatientForm = (props) => {
                 researchId: null
             }
             const patientResponse = await handlePostPatient(formData);
-            console.log(patientResponse.status);
             if(patientResponse.status === 201){
                 handleSuccessToast('Dodano nowego pacjenta');
                 setPatientsArray((allData) => ([...allData, { ...patientResponse.data }]));
