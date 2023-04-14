@@ -20,7 +20,6 @@ const AddPatientForm = (props) => {
                 houseNumber: parseInt(data.houseNumber),
                 apartmentNumber: parseInt(data.apartmentNumber),
                 projectId: null,
-                researchId: null
             }
             const patientResponse = await handlePostPatient(formData);
             if(patientResponse.status === 201){
