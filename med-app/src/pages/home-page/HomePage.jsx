@@ -90,7 +90,7 @@ const HomePage = () => {
         <Container sx={Sx.containerSx}>
             <Grid container spacing={2}>
                 <Grid xs={12} sm={12} md={4} >
-                    <Box component='div' sx={Sx.chartGridBoxSx}>
+                    <Box component='div' sx={{ ...Sx.chartGridBoxSx, boxShadow: 3 }}>
                         <Typography variant="h6" sx={Sx.chartHeaderSx}>
                             Pacjenci
                         </Typography>
@@ -100,7 +100,7 @@ const HomePage = () => {
                     </Box>
                 </Grid>
                 <Grid xs={12} sm={12} md={8}>
-                    <Box component='div' sx={Sx.listGridBoxSx}>
+                    <Box component='div' sx={{...Sx.listGridBoxSx, boxShadow: 3}}>
                         <Box component='div' sx={Sx.listGridBoxSortSx}>
                             <Select
                                 sx={Sx.filterSelectSx}
@@ -110,8 +110,8 @@ const HomePage = () => {
                                 value={patientSort}
                                 onChange={(e) => setPatientSort(e.target.value)}
                             >
-                                <MenuItem value={'asc'}>Sort. rosnąco</MenuItem>
-                                <MenuItem value={'desc'}>Sort. malejąco</MenuItem>
+                                <MenuItem value={'asc'}>Sort. A - Z</MenuItem>
+                                <MenuItem value={'desc'}>Sort. Z - A</MenuItem>
                             </Select>
                         </Box>
                         <Box component='div' sx={Sx.listBoxSx}>
@@ -146,7 +146,7 @@ const HomePage = () => {
                     </Box>
                 </Grid>
                 <Grid xs={12} sm={12} md={4} >
-                    <Box component='div' sx={Sx.chartGridBoxSx} >
+                    <Box component='div' sx={{...Sx.chartGridBoxSx, boxShadow: 3}} >
                         <Typography variant="h6" sx={Sx.chartHeaderSx}>
                             Badania
                         </Typography>
@@ -156,7 +156,7 @@ const HomePage = () => {
                     </Box>
                 </Grid>
                 <Grid xs={12} sm={12} md={8}>
-                    <Box component='div' sx={Sx.listGridBoxSx}>
+                    <Box component='div' sx={{...Sx.listGridBoxSx, boxShadow: 3}}>
                         <Box component='div' sx={Sx.listGridBoxSortSx}>
                             <Select
                                 sx={Sx.filterSelectSx}
@@ -203,7 +203,7 @@ const HomePage = () => {
                     </Box>
                 </Grid>
                 <Grid xs={12} >
-                    <Box component='div' sx={Sx.listGridBoxSx}>
+                    <Box component='div' sx={{...Sx.listGridBoxSx, boxShadow: 3}}>
                         <Box component='div' sx={{ padding: '10px' }}>
                             <Typography variant="h6">
                                 Projekty

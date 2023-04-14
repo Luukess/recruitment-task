@@ -4,7 +4,7 @@ export const Sx = {
         height: '100%'
     },
     chartGridBoxSx: {
-        backgroundColor: '#C4E0F3',
+        backgroundColor: '#fff',
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
@@ -23,7 +23,7 @@ export const Sx = {
         textAlign: 'center'
     },
     listGridBoxSx: {
-        backgroundColor: '#C4E0F3',
+        backgroundColor: '#fff',
         height: '275px',
         borderRadius: '5px',
     },

@@ -3,15 +3,18 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Paper, Avatar } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/material';
+import { useTheme } from "@emotion/react";
 
 const ListItem = (props) => {
+
+    const theme = useTheme();
 
     const { Sx, children, patientData, tessData, projectData } = props;
 
     return (
         <>
             <Grid xs={12}>
-                <Paper sx={Sx.elementListSx} >
+                <Paper sx={{...Sx.elementListSx, backgroundColor: theme.palette.primary.light}} >
                     <Avatar>
                         {children}
                     </Avatar>

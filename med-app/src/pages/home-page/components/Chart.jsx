@@ -36,12 +36,12 @@ const Chart = (props) => {
         label: 'Łacznie',
         data: [...defaultStatePatients],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
+          'rgba(76, 175, 80, 0.8)',
+          'rgba(239, 83, 80, 0.8)',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
+          'rgba(76, 175, 80, 0.8)',
+          'rgba(239, 83, 80, 0.8)',
         ],
         borderWidth: 1,
       },
@@ -55,12 +55,12 @@ const Chart = (props) => {
         label: 'Łacznie',
         data: [...defaultStateTests],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
+          'rgba(76, 175, 80, 0.8)',
+          'rgba(239, 83, 80, 0.8)',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
+          'rgba(76, 175, 80, 0.8)',
+          'rgba(239, 83, 80, 0.8)',
         ],
         borderWidth: 1,
       },

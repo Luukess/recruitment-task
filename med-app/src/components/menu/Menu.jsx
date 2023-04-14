@@ -6,9 +6,14 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { LoginContext } from '../../contexts/loginContext';
 import ScienceIcon from '@mui/icons-material/Science';
 import Grid from '@mui/material/Unstable_Grid2';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useTheme } from '@emotion/react';
 
 const Menu = () => {
+
+    const theme = useTheme();
+
+    const location = useLocation();
 
     const { loggedState, setLoggedState } = useContext(LoginContext)
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -22,7 +27,7 @@ const Menu = () => {
                     <Box sx={Sx.innerBoxOne} component='div'>
                         {loggedState &&
                             <IconButton onClick={() => setIsDrawerOpen(true)}>
-                                <MenuIcon />
+                                <MenuIcon sx={{color: theme.palette.primary.contrastText}} />
                             </IconButton>
                         }
                         <Typography variant='h6' sx={{ padding: '8px', display: 'flex', alignItems: 'center' }}>
@@ -31,7 +36,7 @@ const Menu = () => {
                     </Box>
                     <Box sx={Sx.innerBoxTwo}>
                         {loggedState &&
-                            <Button onClick={handleLogOutUser} type='button' variant="contained" startIcon={<PowerSettingsNewIcon />} >Wyloguj</Button>
+                            <Button onClick={handleLogOutUser} type='button' size='small' variant="contained" startIcon={<PowerSettingsNewIcon />} >Wyloguj</Button>
                         }
                     </Box>
                     <Drawer
@@ -48,17 +53,17 @@ const Menu = () => {
                             <Box component='div' sx={{ padding: '10px' }}>
                                 <Grid container spacing={4}>
                                     <Grid xs={12}>
-                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => {navigate('/app/home'); setIsDrawerOpen(false) }} >
+                                        <Button sx={Sx.navLinkSx} type='button' variant={location.pathname === '/app/home' ? 'outlined' : 'contained' } size='small' component='a' onClick={() => {navigate('/app/home'); setIsDrawerOpen(false) }} >
                                             Strona główna
                                         </Button>
                                     </Grid>
                                     <Grid xs={12}>
-                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => {navigate('/app/projects'); setIsDrawerOpen(false)}} >
+                                        <Button sx={Sx.navLinkSx} type='button' variant={location.pathname === '/app/projects' ? 'outlined' : 'contained' } size='small' component='a' onClick={() => {navigate('/app/projects'); setIsDrawerOpen(false)}} >
                                             Projekty
                                         </Button>
                                     </Grid>
                                     <Grid xs={12}>
-                                        <Button sx={Sx.navLinkSx} type='button' variant="contained" size='small' component='a' onClick={() => {navigate('/app/patients'); setIsDrawerOpen(false)}} >
+                                        <Button sx={Sx.navLinkSx} type='button 'variant={location.pathname === '/app/patients' ? 'outlined' : 'contained' }size='small' component='a' onClick={() => {navigate('/app/patients'); setIsDrawerOpen(false)}} >
                                             Pacjenci
                                         </Button>
                                     </Grid>
