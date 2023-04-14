@@ -17,7 +17,9 @@ $ npm install
 $ npm run serve-json"
 ```
 
-Logowanie do aplikacji
+!! Jeżeli pacjent nie został przydzielony do projektu to podczas usuwania pacjenta lub projektu może pojawić się komunikat, że usunięcie się nie powiodło. Jest to spowodowane niezależnym ode mnie błędem występującym w bibliotece JSON Server. !!
+
+## Dane Logowania do aplikacji
 
 Login: admin@medapp.com
 
