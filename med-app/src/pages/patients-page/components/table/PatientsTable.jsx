@@ -7,7 +7,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const PatientsTable = (props) => {
 
-    const { patientsArray, tableHeadings, patientsError } = props;
+    const { patientsArray, tableHeadings, patientsError, onClickUpdatePatientFormModal, setPatientId } = props;
 
     return (
         <TableContainer sx={{ height: '100%' }} component={Paper} aria-label="patients table">
@@ -28,7 +28,7 @@ const PatientsTable = (props) => {
                                     <IconButton >
                                         <MoreHorizIcon sx={{ fontSize: '16px' }} />
                                     </IconButton>
-                                    <IconButton >
+                                    <IconButton onClick={() => {onClickUpdatePatientFormModal(); setPatientId(patient.id) }}>
                                         <UpgradeIcon sx={{ fontSize: '16px' }} />
                                     </IconButton>
                                     <IconButton >

@@ -8,6 +8,7 @@ import { handleFilterPatients } from "../../utils/filteringFunction";
 import FormModal from "../projects-page/components/formModal/FormModal";
 import AddPatientForm from "./components/addPatientForm/AddPatientForm";
 import AssignPatientForm from "./components/assignPatient/AssignPatientForm";
+import UpdatePatientForm from "./components/updatePatientForm/UpdatePatientForm";
 
 const PatientsPage = () => {
 
@@ -22,6 +23,9 @@ const PatientsPage = () => {
 
     const [addPatientModal, setAddPatientModal] = useState(false);
     const [assignPatientModal, setAssignPatientModal] = useState(false);
+    const [updatePatientModal, setUpdatePatientModal] = useState(false);
+
+    const [patientId, setPatientId] = useState(null);
 
     const filteredPatients = [...handleFilterPatients(patientsArray, surnameFilter, cityFilter)];
 
@@ -38,6 +42,10 @@ const PatientsPage = () => {
 
     const onClickAssignPatientModal = () => {
         setAssignPatientModal(!assignPatientModal);
+    };
+
+    const onClickUpdatePatientFormModal = () => {
+        setUpdatePatientModal(!updatePatientModal)
     };
 
     const handlePagination = (event, page) => {
@@ -102,6 +110,17 @@ const PatientsPage = () => {
                 />
             </FormModal>
 
+            <FormModal
+                openModal={updatePatientModal}
+                onClickClose={onClickUpdatePatientFormModal}
+                title={'Zaktualizuj dane pacjenta'}
+            >
+                <UpdatePatientForm
+                    patientId={patientId}
+                    setPatientsArray={setPatientsArray}
+                />
+            </FormModal>
+
             <Container>
                 <Box component='div' sx={Sx.mainBoxSx}>
                     <Box component='div'>
@@ -117,6 +136,8 @@ const PatientsPage = () => {
                             patientsArray={records}
                             tableHeadings={tableHeadings}
                             patientsError={patientsError}
+                            onClickUpdatePatientFormModal={onClickUpdatePatientFormModal}
+                            setPatientId={setPatientId}
                         />
                     </Box>
                     {patientsError.error &&

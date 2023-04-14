@@ -97,13 +97,9 @@ const AddPatientForm = (props) => {
                     <Grid xs={12} sm={6} md={4}>
                         <TextField sx={Sx.inputSx} size="small" label="Kod pocztowy" variant="filled" error={errors.zipCode ? true : false} {...register('zipCode', {
                             required: 'Pole jest wymagane',
-                            pattern: {
-                                value: /[0-9]/,
-                                message: 'Dozwolone tylko liczby'
-                            },
                             maxLength: {
-                                value: 5,
-                                message: 'Maks 5 znaków'
+                                value: 6,
+                                message: 'Maks 6 znaków'
                             }
                         })} />
                         <Typography variant='caption' align='center' color='error'>
