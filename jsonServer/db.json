@@ -1,21 +1,6 @@
 {
   "patients": [
     {
-      "id": 1,
-      "name": "Jan",
-      "surname": "Kowalski",
-      "city": "Białystok",
-      "zipCode": "15-151",
-      "street": "Warszawska",
-      "houseNumber": 12,
-      "apartmentNumber": 15,
-      "phoneNumber": "123456789",
-      "email": "kowalski@medapp.com",
-      "country": "Polska",
-      "projectId": 4,
-      "researchId": null
-    },
-    {
       "id": 2,
       "name": "Paweł",
       "surname": "Pawłowski",
@@ -27,8 +12,8 @@
       "phoneNumber": "326598741",
       "email": "pawłowski@medapp.com",
       "country": "Polska",
-      "projectId": 6,
-      "researchId": null
+      "gender": "M",
+      "projectId": 4
     },
     {
       "id": 3,
@@ -42,8 +27,8 @@
       "phoneNumber": "561245680",
       "email": "kubkowski@medapp.com",
       "country": "Polska",
-      "projectId": 5,
-      "researchId": null
+      "gender": "M",
+      "projectId": 4
     },
     {
       "id": 4,
@@ -57,8 +42,8 @@
       "phoneNumber": "983260145",
       "email": "platera@medapp.com",
       "country": "Polska",
-      "projectId": 2,
-      "researchId": null
+      "gender": "K",
+      "projectId": 5
     },
     {
       "id": 5,
@@ -72,23 +57,8 @@
       "phoneNumber": "103201265",
       "email": "mily@medapp.com",
       "country": "Polska",
-      "projectId": null,
-      "researchId": null
-    },
-    {
-      "id": 6,
-      "name": "Damian",
-      "surname": "Dominikański",
-      "city": "Białystok",
-      "zipCode": "09-324",
-      "street": "Słowacka",
-      "houseNumber": 3,
-      "apartmentNumber": 55,
-      "phoneNumber": "969326320",
-      "email": "dominikanski@medapp.com",
-      "country": "Polska",
-      "projectId": null,
-      "researchId": null
+      "gender": "M",
+      "projectId": 2
     },
     {
       "id": 7,
@@ -102,8 +72,8 @@
       "phoneNumber": "201302659",
       "email": "wesola@medapp.com",
       "country": "Polska",
-      "projectId": null,
-      "researchId": null
+      "gender": "K",
+      "projectId": 2
     },
     {
       "id": 8,
@@ -117,24 +87,11 @@
       "phoneNumber": "856232012",
       "email": "piotrowiak@medapp.com",
       "country": "Polska",
-      "projectId": null,
-      "researchId": null
+      "gender": "K",
+      "projectId": 6
     }
   ],
   "projects": [
-    {
-      "id": 1,
-      "projectType": "Badawczy",
-      "dateStarted": "2022-08-28",
-      "dateCompleted": "2022-12-10",
-      "title": "Badania nad komórkami macierzystymi",
-      "dataSources": "Lab. Białystok",
-      "pNumber": "2022/ACB/08/28",
-      "isFinished": true,
-      "financialFunds": "20000",
-      "author": "Żyłka Adam",
-      "institutionData": "Uniwersytet Medyczny Białystok"
-    },
     {
       "id": 2,
       "projectType": "Naukowy",
@@ -188,147 +145,30 @@
       "institutionData": "Uniwersytet Medyczny Warszawa"
     },
     {
-      "projectType": "adad",
-      "title": "adad",
-      "author": "adad",
-      "institutionData": "adad",
-      "dataSources": "adad",
-      "financialFunds": "22",
-      "pNumber": "adadad",
-      "dateStarted": "2022-12-05",
-      "dateCompleted": "2022-10-04",
-      "isFinished": false,
+      "projectType": "Badawczy",
+      "title": "Krzywa cukrowa u ludzi starszych",
+      "author": "Zapadka Igor",
+      "institutionData": "Uniwersytet Medyczny Białystok",
+      "dataSources": "Lab. MedApp ",
+      "financialFunds": "20000",
+      "pNumber": "2022/POK/05/05",
+      "dateStarted": "2022-05-05",
+      "isFinished": true,
+      "dateCompleted": "2023-05-05",
       "id": 6
     },
     {
-      "projectType": "Nowy projekt",
-      "title": "tytuł",
-      "author": "autor",
-      "institutionData": "instytucjaaa",
-      "dataSources": "pb",
-      "financialFunds": "12",
-      "pNumber": "alias",
-      "dateStarted": "2022-02-22",
-      "dateCompleted": "2023-05-05",
-      "isFinished": false,
-      "id": 7
-    },
-    {
-      "projectType": "1",
-      "title": "2",
-      "author": "3",
-      "institutionData": "4",
-      "dataSources": "5",
-      "financialFunds": "1",
-      "pNumber": "6",
-      "dateStarted": "2022-05-05",
-      "dateCompleted": "2022-06-06",
-      "isFinished": false,
-      "id": 8
-    },
-    {
-      "projectType": "2",
-      "title": "2",
-      "author": "2",
-      "institutionData": "2",
-      "dataSources": "2",
-      "financialFunds": "2",
-      "pNumber": "2",
-      "dateStarted": "2022-05-05",
-      "dateCompleted": "2022-05-05",
-      "isFinished": false,
-      "id": 9
-    },
-    {
-      "projectType": "q",
-      "title": "q",
-      "author": "q",
-      "institutionData": "q",
-      "dataSources": "q",
-      "financialFunds": "1",
-      "pNumber": "q",
-      "dateStarted": "2020-05-05",
-      "dateCompleted": "2022-05-05",
-      "isFinished": false,
-      "id": 10
-    },
-    {
-      "projectType": "d",
-      "title": "d",
-      "author": "d",
-      "institutionData": "d",
-      "dataSources": "d",
-      "financialFunds": "1",
-      "pNumber": "d",
-      "dateStarted": "2023-05-05",
-      "dateCompleted": "2023-05-05",
-      "isFinished": false,
-      "id": 11
-    },
-    {
-      "projectType": "d",
-      "title": "d",
-      "author": "d",
-      "institutionData": "d",
-      "dataSources": "d",
-      "financialFunds": "1",
-      "pNumber": "d",
-      "dateStarted": "2023-05-05",
-      "dateCompleted": "2023-05-05",
-      "isFinished": false,
-      "id": 12
-    },
-    {
-      "projectType": "w",
-      "title": "w",
-      "author": "w",
-      "institutionData": "w",
-      "dataSources": "w",
-      "financialFunds": "1",
-      "pNumber": "w",
-      "dateStarted": "2023-06-06",
-      "dateCompleted": "2023-06-06",
-      "isFinished": false,
-      "id": 13
-    },
-    {
-      "projectType": "qw",
-      "title": "qw",
-      "author": "qw",
-      "institutionData": "qw",
-      "dataSources": "qw",
-      "financialFunds": "1",
-      "pNumber": "qw",
-      "dateStarted": "2022-05-05",
-      "dateCompleted": "2022-05-05",
-      "isFinished": false,
-      "id": 14
-    },
-    {
-      "projectType": "a",
-      "title": "a",
-      "author": "a",
-      "institutionData": "a",
-      "dataSources": "a",
-      "financialFunds": "1",
-      "pNumber": "a",
-      "dateStarted": "2022-05-05",
-      "dateCompleted": "2022-05-05",
-      "isFinished": false,
-      "id": 15
-    },
-    {
-      "projectType": "a",
-      "title": "a",
-      "author": "a",
-      "institutionData": "a",
-      "dataSources": "a",
-      "financialFunds": "1",
-      "pNumber": "a",
-      "dateStarted": "2022-05-05",
+      "projectType": "Naukowy",
+      "title": "Pomiar ciśnienia krwi u sportowców podczas wysiłku",
+      "author": "Andrzejewski Piotr",
+      "institutionData": "UMB",
+      "dataSources": "Lab. Lux",
+      "financialFunds": "30000",
+      "pNumber": "2023/LPO/05/06",
+      "dateStarted": "2023-05-06",
       "isFinished": false,
       "dateCompleted": null,
-      "id": 16
+      "id": 7
     }
   ],
   "research": [
@@ -341,16 +181,6 @@
       "isFinished": false,
       "mainDoctor": "Zawias Andrzej",
       "projectId": 2
-    },
-    {
-      "id": 2,
-      "dateStarted": "2022-08-28",
-      "dateCompleted": "2022-11-10",
-      "testName": "Jakość komórek macierzystych",
-      "minimalAge": 30,
-      "isFinished": true,
-      "mainDoctor": "Szalka Aleksander",
-      "projectId": 1
     },
     {
       "id": 3,
