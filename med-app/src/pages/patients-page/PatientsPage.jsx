@@ -9,6 +9,7 @@ import FormModal from "../projects-page/components/formModal/FormModal";
 import AddPatientForm from "./components/addPatientForm/AddPatientForm";
 import AssignPatientForm from "./components/assignPatient/AssignPatientForm";
 import UpdatePatientForm from "./components/updatePatientForm/UpdatePatientForm";
+import PatientDetails from "./components/patientDetails/PatientDetails";
 
 const PatientsPage = () => {
 
@@ -24,6 +25,7 @@ const PatientsPage = () => {
     const [addPatientModal, setAddPatientModal] = useState(false);
     const [assignPatientModal, setAssignPatientModal] = useState(false);
     const [updatePatientModal, setUpdatePatientModal] = useState(false);
+    const [detailsPatientModal, setDtailsPatientModal] = useState(false);
 
     const [patientId, setPatientId] = useState(null);
 
@@ -35,6 +37,10 @@ const PatientsPage = () => {
     const firstIndex = lastIndex - recordsOnPage;
     const records = filteredPatients.slice(firstIndex, lastIndex);
     const countPages = Math.ceil(filteredPatients.length / recordsOnPage)
+
+    const onClickPatientsDetailsModal = () => {
+        setDtailsPatientModal(!detailsPatientModal);
+    };
 
     const onClickAddPatientModal = () => {
         setAddPatientModal(!addPatientModal);
@@ -121,6 +127,16 @@ const PatientsPage = () => {
                 />
             </FormModal>
 
+            <FormModal
+                openModal={detailsPatientModal}
+                onClickClose={onClickPatientsDetailsModal}
+                title={'Informacje o pacjencie'}
+            >
+                <PatientDetails
+                    patientId={patientId}
+                />
+            </FormModal>
+
             <Container>
                 <Box component='div' sx={Sx.mainBoxSx}>
                     <Box component='div'>
@@ -140,6 +156,7 @@ const PatientsPage = () => {
                             setPatientId={setPatientId}
                             patientId={patientId}
                             setPatientsArray={setPatientsArray}
+                            onClickPatientsDetailsModal={onClickPatientsDetailsModal}
                         />
                     </Box>
                     {patientsError.error &&

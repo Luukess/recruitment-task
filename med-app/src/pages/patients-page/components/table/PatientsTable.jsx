@@ -9,7 +9,7 @@ import { handleDeletePatient } from "../../../../services/api";
 
 const PatientsTable = (props) => {
 
-    const { patientsArray, tableHeadings, patientsError, onClickUpdatePatientFormModal, setPatientId, patientId, setPatientsArray } = props;
+    const { patientsArray, tableHeadings, patientsError, onClickUpdatePatientFormModal, setPatientId, patientId, setPatientsArray, onClickPatientsDetailsModal } = props;
 
     const handleRemovePatient = async (id) => {
         try{
@@ -46,7 +46,7 @@ const PatientsTable = (props) => {
                         {patientsArray?.map((patient, i) => (
                             <TableRow key={i} >
                                 <TableCell sx={{ textAlign: 'center' }}>
-                                    <IconButton >
+                                    <IconButton onClick={() => {onClickPatientsDetailsModal(); setPatientId(patient?.id)}}>
                                         <MoreHorizIcon sx={{ fontSize: '16px' }} />
                                     </IconButton>
                                     <IconButton onClick={() => {onClickUpdatePatientFormModal(); setPatientId(patient?.id) }}>
