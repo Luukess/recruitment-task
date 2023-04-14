@@ -65,3 +65,10 @@ export const handleFilteredPatientsToAssign = (data) => {
     });
     return patients;
 };
+
+export const handleAmountPatients = (data, id) => {
+    const amount = data.filter((patient) => {
+        return patient?.projectId === id;
+    });
+    return amount.length;
+};

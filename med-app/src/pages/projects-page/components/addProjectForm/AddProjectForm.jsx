@@ -10,7 +10,7 @@ import { handleErrorToast, handleSuccessToast } from "../../../../components/toa
 
 const AddProjectForm = (props) => {
 
-    const { setProjectsArray } = props;
+    const { setProjectsArray, setCurrentPage } = props;
 
     const [hideDateInput, setHideDateInput] = useState(true);
 
@@ -18,7 +18,6 @@ const AddProjectForm = (props) => {
 
     const onSubmit = async (data) => {
         try {
-            console.log(data)
             if (!data.isFinished) {
                 data['dateCompleted'] = null;
             }
@@ -32,6 +31,7 @@ const AddProjectForm = (props) => {
                 handleSuccessToast('Dodano nowy projekt');
                 setProjectsArray((allData) => ([...allData, { ...projectsResponse.data }]));
                 reset();
+                setCurrentPage(1)
             };
 
         } catch (e) {

@@ -3,10 +3,11 @@ import { handleGetProject } from "../../../../services/api";
 import { Sx } from "./projestdetails.style";
 import { Box, Typography } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
+import { handleAmountPatients } from "../../../../utils/filteringFunction";
 
 const ProjectDetails = (props) => {
 
-    const { projectId } = props;
+    const { projectId, patientsArray } = props;
     const [detailsData, setDetailsData] = useState(null);
 
     const handleGetInfoProject = async () => {
@@ -67,6 +68,10 @@ const ProjectDetails = (props) => {
                     <Grid xs={12} sm={6} md={4}>
                         <Typography color='primary' sx={Sx.typographySx} variant="h6">Status projektu:</Typography>
                         <Typography sx={Sx.typographySx} >{detailsData?.isFinished ? 'Zakończony' : 'W trakcie'}</Typography>
+                    </Grid>
+                    <Grid xs={12} sm={6} md={4}>
+                        <Typography color='primary' sx={Sx.typographySx} variant="h6">Liczba pacjentów:</Typography>
+                        <Typography sx={Sx.typographySx} >{handleAmountPatients(patientsArray, detailsData?.id)}</Typography>
                     </Grid>
                 </Grid>
             </Box>

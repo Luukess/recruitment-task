@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import {
     Container, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Pagination, Stack, Typography, IconButton
 } from '@mui/material';
-import { handleDeleteProject, handleGetProjects } from "../../services/api";
+import { handleDeleteProject, handleGetPatients, handleGetProjects } from "../../services/api";
 import { Sx } from "./projectspage.style";
 import FilterComponent from "./components/FilterComponent";
-import { handleFilterProjects } from "../../utils/filteringFunction";
+import { handleAmountPatients, handleFilterProjects } from "../../utils/filteringFunction";
 import FormModal from "./components/formModal/FormModal";
 import AddProjectForm from "./components/addProjectForm/AddProjectForm";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -25,6 +25,8 @@ const ProjectsPage = () => {
     const [opneModalWithUpdateForm, setOpenModalWithUpdateForm] = useState(false);
     const [getProjectId, setGetProjectId] = useState(null);
 
+    const [patientsArray, setPatientsArray] = useState([]);
+
     const [selectProjectFilter, setSelectProjectFilter] = useState('all');
     const [selectStartDate, setSelectStartDate] = useState('');
     const [selectState, setSelectState] = useState('all');
@@ -32,7 +34,7 @@ const ProjectsPage = () => {
     const filteredProjects = [...handleFilterProjects(projectsArray, selectProjectFilter, selectStartDate, selectState)];
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsOnPage = 6;
+    const recordsOnPage = 8;
     const lastIndex = currentPage * recordsOnPage;
     const firstIndex = lastIndex - recordsOnPage;
     const records = filteredProjects.slice(firstIndex, lastIndex);
@@ -65,7 +67,6 @@ const ProjectsPage = () => {
     const handleRemoveProject = async (id) => {
         try {
             const projectResponse = await handleDeleteProject(id);
-            console.log(projectResponse.status);
             if (projectResponse.status === 200) {
                 handleSuccessToast('Projekt usunięto');
                 setProjectsArray((data) => {
@@ -81,6 +82,17 @@ const ProjectsPage = () => {
         }
     };
 
+    const handleGetAllPatients = async () => {
+        try{
+            const patientsResponse = await handleGetPatients();
+            if(patientsResponse.status === 200){
+                setPatientsArray(patientsResponse.data)
+            }
+        }catch(e){
+            console.log(e);
+        };
+    };
+
     const handlePagination = (event, page) => {
         setCurrentPage(page);
         setSelectProjectFilter('all');
@@ -88,6 +100,7 @@ const ProjectsPage = () => {
 
     useEffect(() => {
         handleGetAllProjects();
+        handleGetAllPatients();
     }, []);
 
     useEffect(() => {
@@ -103,7 +116,7 @@ const ProjectsPage = () => {
                 onClickClose={onClickAddProject}
                 title={'Dodaj projekt'}
             >
-                <AddProjectForm setProjectsArray={setProjectsArray} projectsArray={projectsArray} />
+                <AddProjectForm setProjectsArray={setProjectsArray} projectsArray={projectsArray} setCurrentPage={setCurrentPage} />
             </FormModal>
 
             <FormModal
@@ -113,6 +126,7 @@ const ProjectsPage = () => {
             >
                 <ProjectDetails
                     projectId={getProjectId}
+                    patientsArray={patientsArray}
                 />
             </FormModal>
 
@@ -148,12 +162,12 @@ const ProjectsPage = () => {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell sx={Sx.tableCellSx} align="center"></TableCell>
-                                        <TableCell sx={Sx.tableCellSx} align="center">Typ projektu</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center">Tytuł</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center" >Alias</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center" >Data rozp.</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center" >Data zak.</TableCell>
                                         <TableCell sx={Sx.tableCellSx} align="center" >Status projektu</TableCell>
+                                        <TableCell sx={Sx.tableCellSx} align="center" >Pacjentów</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 {!projectsError.error &&
@@ -175,9 +189,6 @@ const ProjectsPage = () => {
                                                     {project.projectType}
                                                 </TableCell>
                                                 <TableCell align="center">
-                                                    {project.title}
-                                                </TableCell>
-                                                <TableCell align="center">
                                                     {project.pNumber}
                                                 </TableCell>
                                                 <TableCell align="center">
@@ -196,6 +207,9 @@ const ProjectsPage = () => {
                                                         :
                                                         'W trakcie'
                                                     }
+                                                </TableCell>
+                                                <TableCell align="center">
+                                                    {handleAmountPatients(patientsArray, project?.id)}
                                                 </TableCell>
                                             </TableRow>
                                         ))}
