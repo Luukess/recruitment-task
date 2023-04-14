@@ -32,7 +32,7 @@ const PatientsPage = () => {
     const filteredPatients = [...handleFilterPatients(patientsArray, surnameFilter, cityFilter)];
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsOnPage = 6;
+    const recordsOnPage = 8;
     const lastIndex = currentPage * recordsOnPage;
     const firstIndex = lastIndex - recordsOnPage;
     const records = filteredPatients.slice(firstIndex, lastIndex);
