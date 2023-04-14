@@ -28,10 +28,9 @@ const ProjectsPage = () => {
     const [patientsArray, setPatientsArray] = useState([]);
 
     const [selectProjectFilter, setSelectProjectFilter] = useState('all');
-    const [selectStartDate, setSelectStartDate] = useState('');
     const [selectState, setSelectState] = useState('all');
 
-    const filteredProjects = [...handleFilterProjects(projectsArray, selectProjectFilter, selectStartDate, selectState)];
+    const filteredProjects = [...handleFilterProjects(projectsArray, selectProjectFilter, selectState)];
 
     const [currentPage, setCurrentPage] = useState(1);
     const recordsOnPage = 8;
@@ -148,8 +147,6 @@ const ProjectsPage = () => {
                             projectsArray={projectsArray}
                             selectProjectFilter={selectProjectFilter}
                             setSelectProjectFilter={setSelectProjectFilter}
-                            selectStartDate={selectStartDate}
-                            setSelectStartDate={setSelectStartDate}
                             selectState={selectState}
                             setSelectState={setSelectState}
                             onClickAddProject={onClickAddProject}
