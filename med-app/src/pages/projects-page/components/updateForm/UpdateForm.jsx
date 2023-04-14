@@ -1,4 +1,4 @@
-import { Box, TextField, FormControlLabel, Checkbox, Button } from "@mui/material";
+import { Box, TextField, FormControlLabel, Checkbox, Button, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Sx } from "./updateform.style";
 import Grid from '@mui/material/Unstable_Grid2';
@@ -43,10 +43,10 @@ const UpdateForm = (props) => {
             console.log(e)
         };
     };
-    console.log(hideFinishDate)
+
     const onSubmit = async (data) => {
-        try{
-            if(!hideFinishDate){
+        try {
+            if (!hideFinishDate) {
                 data.dateCompleted = null;
             }
             const formData = {
@@ -56,17 +56,17 @@ const UpdateForm = (props) => {
             }
             const projectResponse = await handlePutProject(fullProjectObject?.id, formData);
             console.log(projectResponse.data, 'dddd')
-            if(projectResponse.status === 200){
+            if (projectResponse.status === 200) {
                 handleSuccessToast('Zaktualizowano projekt');
                 setProjectsArray((data) => {
                     const filterProjects = data.filter((project) => {
                         return project.id !== fullProjectObject?.id;
                     });
-                    return[...filterProjects, projectResponse.data];
+                    return [...filterProjects, projectResponse.data];
                 })
             };
 
-        }catch(e){
+        } catch (e) {
             console.log(e);
             handleErrorToast('Aktualizacja nie powiodła się');
         }
@@ -77,7 +77,7 @@ const UpdateForm = (props) => {
     }, []);
 
     useEffect(() => {
-        if(!hideFinishDate){
+        if (!hideFinishDate) {
             resetField('dateCompleted');
         }
     }, [hideFinishDate])
@@ -93,46 +93,67 @@ const UpdateForm = (props) => {
                 <Box component='div' sx={{ marginBottom: '16px' }}>
                     <Grid container rowSpacing={4} spacing={2}>
                         <Grid xs={12} sm={6} md={4}>
-                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} size="small" label="Tytył" variant="filled" {...register('title', {
+                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} size="small" label="Tytył" variant="filled" error={errors.title ? true : false} {...register('title', {
                                 required: 'Pole jest wymagane'
                             })} />
+                            <Typography variant='caption' align='center' color='error'>
+                                {errors.title?.message}
+                            </Typography>
                         </Grid>
                         <Grid xs={12} sm={6} md={4}>
-                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} size="small" label="Autor projektu" variant="filled" {...register('author', {
+                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} size="small" label="Autor projektu" variant="filled" error={errors.author ? true : false} {...register('author', {
                                 required: 'Pole jest wymagane'
                             })} />
+                            <Typography variant='caption' align='center' color='error'>
+                                {errors.author?.message}
+                            </Typography>
                         </Grid>
                         <Grid xs={12} sm={6} md={4}>
-                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} size="small" label="Instytucja" variant="filled"  {...register('institutionData', {
+                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} size="small" label="Instytucja" variant="filled" error={errors.institutionData ? true : false}  {...register('institutionData', {
                                 required: 'Pole jest wymagane'
                             })} />
+                            <Typography variant='caption' align='center' color='error'>
+                                {errors.institutionData?.message}
+                            </Typography>
                         </Grid>
                         <Grid xs={12} sm={6} md={4}>
-                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} size="small" label="Alias" variant="filled" {...register('pNumber', {
+                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} size="small" label="Alias" variant="filled" error={errors.pNumber ? true : false} {...register('pNumber', {
                                 required: 'Pole jest wymagane'
                             })} />
+                            <Typography variant='caption' align='center' color='error'>
+                                {errors.pNumber?.message}
+                            </Typography>
                         </Grid>
                         <Grid xs={12} sm={6} md={4}>
-                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} type="number" size="small" label="Fundusz" variant="filled" {...register('financialFunds', {
+                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} type="number" size="small" label="Fundusz" variant="filled" error={errors.financialFunds ? true : false} {...register('financialFunds', {
                                 required: 'Pole jest wymagane'
                             })} />
+                            <Typography variant='caption' align='center' color='error'>
+                                {errors.financialFunds?.message}
+                            </Typography>
                         </Grid>
                         <Grid xs={12} sm={6} md={4}>
-                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} type="date" size="small" label="Data rozpoczecia" variant="filled" {...register('dateStarted', {
+                            <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} type="date" size="small" label="Data rozpoczecia" variant="filled" error={errors.dateStarted ? true : false} {...register('dateStarted', {
                                 required: 'Pole jest wymagane'
                             })} />
+                            <Typography variant='caption' align='center' color='error'>
+                                {errors.dateStarted?.message}
+                            </Typography>
                         </Grid>
                         {hideFinishDate &&
                             <Grid xs={12} sm={6} md={4}>
                                 <>
-                                    <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} type="date" size="small" label="Data zakończenia" variant="filled" {...register('dateCompleted', {
+                                    <TextField InputLabelProps={{ shrink: true }} sx={Sx.inputSx} type="date" size="small" label="Data zakończenia" variant="filled" error={errors.dateCompleted ? true : false} {...register('dateCompleted', {
                                         required: 'Pole jest wymagane'
                                     })} />
+                                    <Typography variant='caption' align='center' color='error'>
+                                        {errors.dateCompleted?.message}
+                                    </Typography>
                                 </>
                             </Grid>
                         }
                         <Grid>
-                            <FormControlLabel label='Projekt zakończony' control={<Checkbox value={hideFinishDate} checked={hideFinishDate} onChange={(e) => { setHideFinishDate(e.target.checked)}} />} />
+                            <FormControlLabel label='Projekt zakończony' control={<Checkbox value={hideFinishDate} checked={hideFinishDate} onChange={(e) => { setHideFinishDate(e.target.checked) }} />} />
                         </Grid>
                     </Grid>
                 </Box>
