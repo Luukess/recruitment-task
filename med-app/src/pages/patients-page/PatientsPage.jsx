@@ -2,11 +2,12 @@ import { Box, Container, Pagination, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Sx } from "./patientspage.style";
 import PatientsTable from "./components/table/PatientsTable";
-import { handleGetPatients } from "../../services/api";
+import { handleGetPatients, handleGetProjects } from "../../services/api";
 import FilterPatients from "./components/filterPatients/FilterPatients";
 import { handleFilterPatients } from "../../utils/filteringFunction";
 import FormModal from "../projects-page/components/formModal/FormModal";
 import AddPatientForm from "./components/addPatientForm/AddPatientForm";
+import AssignPatientForm from "./components/assignPatient/AssignPatientForm";
 
 const PatientsPage = () => {
 
@@ -14,11 +15,13 @@ const PatientsPage = () => {
 
     const [patientsArray, setPatientsArray] = useState([]);
     const [patientsError, setPatientsError] = useState({ error: false, message: '' });
+    const [projectArray, setProjectArray] = useState([]);
 
     const [surnameFilter, setSurnameFilter] = useState('');
     const [cityFilter, setCityFilter] = useState('');
 
     const [addPatientModal, setAddPatientModal] = useState(false);
+    const [assignPatientModal, setAssignPatientModal] = useState(false);
 
     const filteredPatients = [...handleFilterPatients(patientsArray, surnameFilter, cityFilter)];
 
@@ -29,15 +32,19 @@ const PatientsPage = () => {
     const records = filteredPatients.slice(firstIndex, lastIndex);
     const countPages = Math.ceil(filteredPatients.length / recordsOnPage)
 
-    const onClickAddPatientModal = () =>{
+    const onClickAddPatientModal = () => {
         setAddPatientModal(!addPatientModal);
+    };
+
+    const onClickAssignPatientModal = () => {
+        setAssignPatientModal(!assignPatientModal);
     };
 
     const handlePagination = (event, page) => {
         setCurrentPage(page);
         setCityFilter('')
         setSurnameFilter('')
-    }
+    };
 
     const handleGetAllPatients = async () => {
         try {
@@ -51,8 +58,20 @@ const PatientsPage = () => {
         }
     };
 
+    const handleGetAllProjects = async () => {
+        try {
+            const projectResponse = await handleGetProjects();
+            if (projectResponse.status === 200) {
+                setProjectArray(projectResponse.data);
+            }
+        } catch (e) {
+            console.log(e);
+        };
+    };
+
     useEffect(() => {
         handleGetAllPatients();
+        handleGetAllProjects();
     }, []);
 
     useEffect(() => {
@@ -71,6 +90,18 @@ const PatientsPage = () => {
                 <AddPatientForm setPatientsArray={setPatientsArray} />
             </FormModal>
 
+            <FormModal
+                openModal={assignPatientModal}
+                onClickClose={onClickAssignPatientModal}
+                title={'Przydziel pacjenta'}
+            >
+                <AssignPatientForm
+                    projectArray={projectArray}
+                    patientsArray={patientsArray}
+                    setPatientsArray={setPatientsArray}
+                />
+            </FormModal>
+
             <Container>
                 <Box component='div' sx={Sx.mainBoxSx}>
                     <Box component='div'>
@@ -78,6 +109,7 @@ const PatientsPage = () => {
                             setSurnameFilter={setSurnameFilter}
                             setCityFilter={setCityFilter}
                             onClickAddPatient={onClickAddPatientModal}
+                            onClickAssignPatientModal={onClickAssignPatientModal}
                         />
                     </Box>
                     <Box sx={Sx.tableBoxSx}>

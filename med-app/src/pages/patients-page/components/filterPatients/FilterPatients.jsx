@@ -5,7 +5,7 @@ import { Sx } from "./filterpatients.style";
 
 const FilterPatients = (props) => {
 
-    const { setSurnameFilter, setCityFilter, onClickAddPatient } = props;
+    const { setSurnameFilter, setCityFilter, onClickAddPatient, onClickAssignPatientModal } = props;
 
     return (
         <Box component='div' sx={Sx.filterMainBox}>
@@ -20,7 +20,7 @@ const FilterPatients = (props) => {
                     <Button sx={Sx.inputsSx} variant="contained" type="button" onClick={() => onClickAddPatient()}>Dodaj pacjenta</Button>
                 </Grid>
                 <Grid xs={12} sm={6} md={3} sx={Sx.gridButtonSx}>
-                    <Button sx={Sx.inputsSx} variant="contained" type="button">Przydziel pacjenta</Button>
+                    <Button sx={Sx.inputsSx} variant="contained" type="button" onClick={() => onClickAssignPatientModal()}>Przydziel pacjenta</Button>
                 </Grid>
             </Grid>
         </Box>

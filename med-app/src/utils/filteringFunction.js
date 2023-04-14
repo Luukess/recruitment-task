@@ -58,3 +58,10 @@ export const handleFilterPatients = (data, surname, city) => {
     };
     return allData;
 };
+
+export const handleFilteredPatientsToAssign = (data) => {
+    const patients = data.filter((patient) => {
+        return patient?.projectId === null;
+    });
+    return patients;
+};

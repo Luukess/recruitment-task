@@ -40,3 +40,11 @@ export const handlePutProject = async (id, data) => {
 export const handlePostPatient = async (data) => {
     return  instanceConnectApi.post(`/patients`, data);
 };
+
+export const handleGetPatient = async (id) => {
+    return instanceConnectApi.get(`/patients/${id}`);
+};
+
+export const handlePutPatient = async (id, data) => {
+    return instanceConnectApi.put(`/patients/${id}`, data)
+}
